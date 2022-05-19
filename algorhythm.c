@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/18 18:57:26 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/19 13:04:06 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,12 +84,17 @@ void  get_sequence(t_data *data)
     }
     i--;
   }
+
+  //print caches
+  //i = 0;
   data->len_seq = j;
-  i = 0;
-  while (i < j)
+  printf("cache number:\n");
+  j--;
+  while (j >= 0)
   {
-    printf("%d ", data->seq[i]);
-    i++;
+    printf("%d ", data->seq[j]);
+    j--;
+    //i++;
   }
   printf("\n");
 }
@@ -188,11 +193,13 @@ void  LIS_LSD(t_data *data)
   init_stacka_LIS(data);
 
   //print the cache ones
-  //while (i < data->len)
-  //{
-  //  printf("%d", data->cache[i]);
-  //  i++;
-  //}
+  printf("cache ones:\n");
+  i = 0;
+  while (i < data->len)
+  {
+    printf("%d ", data->cache[i]);
+    i++;
+  }
 }
 
 void  algorhythm(t_data *data)

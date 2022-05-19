@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/18 19:02:30 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/19 12:51:27 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,28 +77,28 @@ int main(int ac, char **av)
   algorhythm(&data);
   //while (1);
 
-  t_list  *trav_b;
-  trav_b = data.stack_b;
-  printf("stack B:\n");
-  while (trav_b != NULL)
-  {
-    printf("| %d |\n", trav_b->data);
-    trav_b = trav_b->link;
-  }
-  printf("----------\n");
+  //t_list  *trav_b;
+  //trav_b = data.stack_b;
+  //printf("stack B:\n");
+  //while (trav_b != NULL)
+  //{
+  //  printf("| %d |\n", trav_b->data);
+  //  trav_b = trav_b->link;
+  //}
+  //printf("----------\n");
 
   //rotate_a(&data);
   //rotate_a(&data);
   //reverse_a(&data);
 
-  t_list  *trav_a;
-  trav_a = data.stack_a;
-  printf("stack A:\n");
-  while (trav_a != NULL)
-  {
-    printf("| %d |\n", trav_a->data);
-    trav_a = trav_a->link;
-  }
+  //t_list  *trav_a;
+  //trav_a = data.stack_a;
+  //printf("stack A:\n");
+  //while (trav_a != NULL)
+  //{
+  //  printf("| %d |\n", trav_a->data);
+  //  trav_a = trav_a->link;
+  //}
   //while (1);
 
   //printf("%d", data.stack_a->data);
