@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/19 12:51:27 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/24 13:16:01 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@
 int main(int ac, char **av)
 {
   t_data  data;
+  //t_list *bigg;
 
   if (ac == 1)
     error_push_P("Enter the arg :v\nUsage: [push] number :D");
@@ -75,7 +76,16 @@ int main(int ac, char **av)
   data.str = ft_strdup("");
   get_arg(&data, av);
   algorhythm(&data);
+  //bigg = data.stack_a;
+  //find_big_num(bigg, &data);
+  //p_b(&data);
+  LSD(&data);
   //while (1);
+
+  //p_b(&data);
+  //p_b(&data);
+
+  //LSD(&data);
 
   //t_list  *trav_b;
   //trav_b = data.stack_b;

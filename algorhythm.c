@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/19 13:04:06 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/23 19:52:40 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,11 +15,11 @@
 t_list  *find_min(t_list *node)
 {
   int i;
-  t_list  *min;
+  //t_list  *min;
   t_list  *next;
   
   i = 0;
-  min = NULL;
+  //min = NULL;
   next = node->link;
   while (node)
   {
@@ -88,15 +88,15 @@ void  get_sequence(t_data *data)
   //print caches
   //i = 0;
   data->len_seq = j;
-  printf("cache number:\n");
-  j--;
-  while (j >= 0)
-  {
-    printf("%d ", data->seq[j]);
-    j--;
-    //i++;
-  }
-  printf("\n");
+  //printf("cache number:\n");
+  //j--;
+  //while (j >= 0)
+  //{
+  //  printf("%d ", data->seq[j]);
+  //  j--;
+  //  //i++;
+  //}
+  //printf("\n");
 }
 
 void  be_ones(t_data *data)
@@ -183,7 +183,7 @@ void  LIS_LSD(t_data *data)
     j = 0;
     while (j < i)
     {
-      if (data->tmp[j] < data->tmp[i])
+      if (data->tmp[j] < data->tmp[i] && data->cache[i] < data->cache[j] + 1)
         data->cache[i] = data->cache[j] + 1;
       j++;
     }
@@ -193,13 +193,14 @@ void  LIS_LSD(t_data *data)
   init_stacka_LIS(data);
 
   //print the cache ones
-  printf("cache ones:\n");
-  i = 0;
-  while (i < data->len)
-  {
-    printf("%d ", data->cache[i]);
-    i++;
-  }
+  //printf("cache ones:\n");
+  //i = 0;
+  //while (i < data->len)
+  //{
+  //  printf("%d ", data->cache[i]);
+  //  i++;
+  //}
+  //printf("\n");
 }
 
 void  algorhythm(t_data *data)

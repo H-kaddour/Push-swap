@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/17 14:16:27 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/24 12:59:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,12 +34,23 @@ typedef struct t_pusha
   int     nbr;
   char    *jwan;
   char    *join;
+  //len of stack_a
   int     len;
+  //len of stack_b
+  int     len_b;
   int     *cache;
   int     *seq;
   int     len_seq;
   t_list  *stack_a;
   t_list  *stack_b;
+  //store indexes of stack a & b
+  int     *pos_a;
+  int     *pos_b;
+  int     s_a;
+  int     s_b;
+  t_list  *trav_a;
+  t_list  *trav_b;
+
 } t_data;
 
 void    get_arg(t_data *data, char **av);
@@ -74,5 +85,7 @@ void    fill_stack_node(t_data *data);
 t_list  *fill_node(t_list *head, int data);
 void    error_push_P(char *str);
 void    algorhythm(t_data *data);
+void    LSD(t_data *data);
+int     find_big_num(t_list *node, t_data *data);
 
 #endif
