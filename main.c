@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/24 13:16:01 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:12:39 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,28 +87,28 @@ int main(int ac, char **av)
 
   //LSD(&data);
 
-  //t_list  *trav_b;
-  //trav_b = data.stack_b;
-  //printf("stack B:\n");
-  //while (trav_b != NULL)
-  //{
-  //  printf("| %d |\n", trav_b->data);
-  //  trav_b = trav_b->link;
-  //}
-  //printf("----------\n");
+  t_list  *trav_b;
+  trav_b = data.stack_b;
+  printf("stack B:\n");
+  while (trav_b != NULL)
+  {
+    printf("| %d |\n", trav_b->data);
+    trav_b = trav_b->link;
+  }
+  printf("----------\n");
 
   //rotate_a(&data);
   //rotate_a(&data);
   //reverse_a(&data);
 
-  //t_list  *trav_a;
-  //trav_a = data.stack_a;
-  //printf("stack A:\n");
-  //while (trav_a != NULL)
-  //{
-  //  printf("| %d |\n", trav_a->data);
-  //  trav_a = trav_a->link;
-  //}
+  t_list  *trav_a;
+  trav_a = data.stack_a;
+  printf("stack A:\n");
+  while (trav_a != NULL)
+  {
+    printf("| %d |\n", trav_a->data);
+    trav_a = trav_a->link;
+  }
   //while (1);
 
   //printf("%d", data.stack_a->data);

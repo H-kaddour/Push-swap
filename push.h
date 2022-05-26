@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/24 12:59:24 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/26 20:35:00 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ typedef struct t_pusha
   int     s_b;
   t_list  *trav_a;
   t_list  *trav_b;
-
+  //t_list  *best;
+  int     best;
 } t_data;
 
 void    get_arg(t_data *data, char **av);

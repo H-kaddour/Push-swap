@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/25 15:46:27 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/26 21:39:46 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,13 +139,15 @@ void  fill_pos_a(t_data *data)
       data->pos_a[i] = big_i;
       //data->pos_a[i] = find_big_num(data->stack_a, data);
     }
-    if (node_index(data->stack_b, i) < data->stack_a->data && node_index(data->stack_b, i) > node_index(data->stack_a, data->len))
+    if (node_index(data->stack_b, i) < data->stack_a->data && \
+        node_index(data->stack_b, i) > node_index(data->stack_a, data->len))
     {
       data->pos_a[i] = i;
     }
     while (j < data->s_a /*+ 1*/)
     {
-      if (node_index(data->stack_b, i) > node_index(data->stack_a, j) && node_index(data->stack_b, i) < node_index(data->stack_a, j + 1))
+      if (node_index(data->stack_b, i) > node_index(data->stack_a, j) && \
+          node_index(data->stack_b, i) < node_index(data->stack_a, j + 1))
       {//index of pos_a is "i"
         data->pos_a[i] = j + 1;
         break ;
@@ -157,7 +159,8 @@ void  fill_pos_a(t_data *data)
     j = data->len - 1;
     while (j > data->s_a)
     {
-      if (node_index(data->stack_b, i) < node_index(data->stack_a, j) && node_index(data->stack_b, i) > node_index(data->stack_a, j - 1))
+      if (node_index(data->stack_b, i) < node_index(data->stack_a, j) && \
+          node_index(data->stack_b, i) > node_index(data->stack_a, j - 1))
       {
         data->pos_a[i] = k;
         break ;
@@ -180,47 +183,133 @@ void  fill_pos_a(t_data *data)
 
 //Compare operation:
 //1) if stack_b->data < stack_b->data && stack_b > last element of stack_a
-
-t_list  *find_best_element(t_data  *data)
+//t_list  *find_best_element(t_data *data)
+int find_best_element(t_data  *data)
 {
-  t_list  *node;
+  //t_list  *node;
+  //t_list  *best;
   int     i;
   int     j;
-  //int     first;
-  //int     second;
+  int     *ptr;
 
   i = 0;
-  j = 1;
-  node = data->stack_a;
-  //first = data->pos_a[i] + data->pos_b[i];
-  //second = data->pos_a[i + 1] + data->pos_b[i + 1];
-  while (i < data->len_b && j < data->len_b - 1)
+  //node = data->stack_b;
+  ptr = malloc(sizeof(int) * data->len_b);
+  while (i < data->len_b /*&& j < data->len_b - 1*/)
   {
-    if (data->pos_a[i] + data->pos_b[i] < data->pos_b[j] + data->pos_b[j])
-      node = node->link;
+    if (data->pos_a[i] < 0 && data->pos_b[i] < 0)
+      ptr[i] = (data->pos_a[i] * -1) + (data->pos_b[i] * -1);
+    else if (data->pos_a[i] < 0)
+      ptr[i] = (data->pos_a[i] * -1) + data->pos_b[i];
+    else if (data->pos_b[i] < 0)
+      ptr[i] = data->pos_a[i] + data->pos_b[i] * -1;
+    else
+      ptr[i] = data->pos_a[i] + data->pos_b[i];
+
     i++;
-    j++;
+    //if (data->pos_a[i] + data->pos_b[i] < data->pos_a[j] + data->pos_b[j])
+    //  best = node;
+    //node = node->link;
+    //j++;
   }
-  return (node);
+  i = 0;
+  j = 1;
+  //best = node->link;
+  while (j < data->len_b)
+  {
+    if (ptr[j] < ptr[i])
+      i++;
+      //best = node;
+    j++;
+    //node = node->link;
+  }
+  return (i);
+  //return (best);
+}
+
+void  push_B(t_data *data)
+{
+  int i;
+
+  if (data->pos_b[data->best] >= 0)
+  {
+    i = 0;
+    while (i < data->best)
+    {
+      rotate_b(data);
+      i++;
+    }
+  }
+  if (data->pos_b[data->best] < 0)
+  {
+    i = 0;
+    while (i < data->best)
+    {
+      reverse_b(data);
+      i++;
+    }
+  }
+  //first gad place of the best element in stack B
+  //second gad place rotate how many time in pos_a to push_b
+  //then push the element to stack_a
+}
+
+void  push_A(t_data *data)
+{
+  int i;
+
+  if (data->pos_a[data->best] >= 0)
+  {
+    i = 0;
+    while (i < data->best)
+    {
+      rotate_a(data);
+      i++;
+    }
+  }
+  if (data->pos_a[data->best] < 0)
+  {
+    i = 0;
+    while (i < data->best)
+    {
+      reverse_a(data);
+      i++;
+    }
+  }
+  //first gad place of the best element in stack B
+  //second gad place rotate how many time in pos_a to push_b
+  //then push the element to stack_a
 }
 
 void  LSD(t_data *data)
 {
   int i;
-  t_list  *best;
 
   i = 0;
+  int len;
   //loop for all those element
-  data->len = node_size(data->stack_a);
-  data->len_b = node_size(data->stack_b);
-  data->pos_a = malloc(sizeof(int) * data->len_b);
-  data->pos_b = malloc(sizeof(int) * data->len_b);
-  data->s_a = data->len / 2;
-  //while (i < data->len_b)
-  //{
+  //data->len = node_size(data->stack_a);
+  len = node_size(data->stack_b);
+  //data->pos_a = malloc(sizeof(int) * data->len_b);
+  //data->pos_b = malloc(sizeof(int) * data->len_b);
+  //data->s_a = data->len / 2;
+  while (i < len)
+  {
+    data->len = node_size(data->stack_a);
+    data->len_b = node_size(data->stack_b);
+    data->pos_a = malloc(sizeof(int) * data->len_b);
+    data->pos_b = malloc(sizeof(int) * data->len_b);
+    data->s_a = data->len / 2;
     fill_pos_b(data);
     fill_pos_a(data);
-    best = find_best_element(data);
+    //data->best = find_best_element(data);
+    data->best = find_best_element(data);
+    push_B(data);
+    push_A(data);
+    p_a(data);
+    free(data->pos_a);
+    free(data->pos_b);
+    //printf("%d", data->best);
 
     //free(data->pos_a);
     //best_element(data);
@@ -230,13 +319,14 @@ void  LSD(t_data *data)
     //push it 
     //free all pos
     //loop again
-    //i++;
-  //}
+    i++;
+  }
 
-    printf("");
 
   //while (i < data->len_b)
   //{
+  //  //if (data->pos_b[i] < 0)
+  //  //  printf("hey\n");
   //  printf("%d\n", data->pos_b[i]);
   //  i++;
   //}
