@@ -6,30 +6,37 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/23 19:52:40 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/27 14:48:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-t_list  *find_min(t_list *node)
+t_list  *find_min(t_list *node, t_data *data)
 {
   int i;
+  //int j;
   //t_list  *min;
   t_list  *next;
   
   i = 0;
+  //j = 0;
   //min = NULL;
-  next = node->link;
+  //next = node->link;
+  next = node;
   while (node)
   {
     if (node->data < next->data)
     {
       next = node;
+      //i++;
       //min = next;
     }
     node = node->link;
   }
+  //j++;
+
+  // data->min_index = i;
   //while (node)
   //{
     //while (next)
@@ -89,14 +96,15 @@ void  get_sequence(t_data *data)
   //i = 0;
   data->len_seq = j;
   //printf("cache number:\n");
-  //j--;
-  //while (j >= 0)
-  //{
-  //  printf("%d ", data->seq[j]);
-  //  j--;
-  //  //i++;
-  //}
-  //printf("\n");
+  j--;
+  printf("sequence\n");
+  while (j >= 0)
+  {
+    printf("%d ", data->seq[j]);
+    j--;
+    //i++;
+  }
+  //printf("\n------------\n");
 }
 
 void  be_ones(t_data *data)
@@ -156,19 +164,27 @@ void  init_stacka_LIS(t_data *data)
     i++;
     trav_a = trav_a->link;
   }
-  //while (data->stack_a != NULL)
-  //{
-  //  printf("%d ", data->stack_a->data);
-  //  data->stack_a = data->stack_a->link;
-  //}
+
+  t_list  *a;
+  t_list  *b;
+
+  a = data->stack_a;
+  b = data->stack_b;
+  printf("\n----stack_a-----\n");
+  while (a != NULL)
+  {
+    printf("%d ", a->data);
+    a = a->link;
+  }
   //printf("\n");
 
-  //while (data->stack_b != NULL)
-  //{
-  //  printf("%d ", data->stack_b->data);
-  //  data->stack_b = data->stack_b->link;
-  //}
-  //printf("\n");
+  printf("\n----stack_b-----\n");
+  while (b != NULL)
+  {
+    printf("%d ", b->data);
+    b = b->link;
+  }
+  printf("\n--------------\n");
 }
 
 void  LIS_LSD(t_data *data)
@@ -214,8 +230,8 @@ void  algorhythm(t_data *data)
 
   i = 0;
   data->len = node_size(data->stack_a); 
-  data->tmp = malloc(sizeof(int) * data->len + 1);
-  min = find_min(data->stack_a);
+  data->tmp = malloc(sizeof(int) * data->len /*+ 1*/);
+  min = find_min(data->stack_a, data);
   trav = min;
   while (trav)
   {
@@ -230,7 +246,7 @@ void  algorhythm(t_data *data)
     trav_a = trav_a->link;
     i++;
   }
-  data->tmp[i] = 0;
+  //data->tmp[i] = 0;
   LIS_LSD(data);
 
   //i = 0;
@@ -242,13 +258,14 @@ void  algorhythm(t_data *data)
 
 
   //print new cache:
-  //i = 0;
-  //while (i < data->len)
-  //{
-  //  printf("%d ", data->cache[i]);
-  //  i++;
-  //}
-  //printf("\n--------------\n");
+  i = 0;
+  printf("cache\n");
+  while (i < data->len)
+  {
+    printf("%d ", data->cache[i]);
+    i++;
+  }
+  printf("\n--------------\n");
 
 
 

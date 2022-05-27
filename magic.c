@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/26 21:39:46 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/27 18:54:57 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ int node_index(t_list *stack, int index)
     stack = stack->link;
     i++;
   }
+  //data->min_index = i;
   return (stack->data);
 }
 
@@ -190,21 +191,23 @@ int find_best_element(t_data  *data)
   //t_list  *best;
   int     i;
   int     j;
-  int     *ptr;
+  //int     *ptr;
 
   i = 0;
   //node = data->stack_b;
-  ptr = malloc(sizeof(int) * data->len_b);
+  //ptr = malloc(sizeof(int) * data->len_b);
+  data->p = malloc(sizeof(int) * data->len_b);
   while (i < data->len_b /*&& j < data->len_b - 1*/)
   {
     if (data->pos_a[i] < 0 && data->pos_b[i] < 0)
-      ptr[i] = (data->pos_a[i] * -1) + (data->pos_b[i] * -1);
+      data->p[i] = (data->pos_a[i] * -1) + (data->pos_b[i] * -1);
+      //ptr[i] = (data->pos_a[i] * -1) + (data->pos_b[i] * -1);
     else if (data->pos_a[i] < 0)
-      ptr[i] = (data->pos_a[i] * -1) + data->pos_b[i];
+      data->p[i] = (data->pos_a[i] * -1) + data->pos_b[i];
     else if (data->pos_b[i] < 0)
-      ptr[i] = data->pos_a[i] + data->pos_b[i] * -1;
+      data->p[i] = data->pos_a[i] + data->pos_b[i] * -1;
     else
-      ptr[i] = data->pos_a[i] + data->pos_b[i];
+      data->p[i] = data->pos_a[i] + data->pos_b[i];
 
     i++;
     //if (data->pos_a[i] + data->pos_b[i] < data->pos_a[j] + data->pos_b[j])
@@ -217,7 +220,7 @@ int find_best_element(t_data  *data)
   //best = node->link;
   while (j < data->len_b)
   {
-    if (ptr[j] < ptr[i])
+    if (data->p[j] < data->p[i])
       i++;
       //best = node;
     j++;
@@ -234,7 +237,8 @@ void  push_B(t_data *data)
   if (data->pos_b[data->best] >= 0)
   {
     i = 0;
-    while (i < data->best)
+    //while (i < data->best)
+    while (i < data->pos_b[data->best])
     {
       rotate_b(data);
       i++;
@@ -243,7 +247,7 @@ void  push_B(t_data *data)
   if (data->pos_b[data->best] < 0)
   {
     i = 0;
-    while (i < data->best)
+    while (i < data->pos_b[data->best])
     {
       reverse_b(data);
       i++;
@@ -261,7 +265,7 @@ void  push_A(t_data *data)
   if (data->pos_a[data->best] >= 0)
   {
     i = 0;
-    while (i < data->best)
+    while (i < data->pos_a[data->best])
     {
       rotate_a(data);
       i++;
@@ -270,7 +274,7 @@ void  push_A(t_data *data)
   if (data->pos_a[data->best] < 0)
   {
     i = 0;
-    while (i < data->best)
+    while (i < data->pos_a[data->best])
     {
       reverse_a(data);
       i++;
@@ -279,6 +283,58 @@ void  push_A(t_data *data)
   //first gad place of the best element in stack B
   //second gad place rotate how many time in pos_a to push_b
   //then push the element to stack_a
+}
+
+void  check_small_top(t_data *data)
+{
+  int i;
+  t_list  *node;
+  t_list  *trav_a;
+
+  //i = 1;
+  i = 0;
+  trav_a = data->stack_a;
+  node = find_min(data->stack_a, data);
+  while (trav_a->link)
+  {
+    if (trav_a->data == node->data)
+      break ;
+    i++;
+    trav_a = trav_a->link;
+  }
+  data->min_index = i;
+  //printf("%d", i);
+  i = 0;
+  while (i < data->min_index)
+  {
+    rotate_a(data);
+    i++;
+  }
+  //if (data->min_index == 0)
+  //  return ;
+  //if (data->min_index == 1)
+  //  rotate_a(data);
+  //if (data->min_index < 1)
+  //{
+  //  while (i <= data->min_index - 1)
+  //  {
+  //    rotate_a(data);
+  //    i++;
+  //  }
+  //}
+
+  //if (data->min_index == 0)
+  //  return ;
+  //if (data->min_index == 1)
+  //  rotate_a(data);
+  //if (data->min_index < 1)
+  //{
+  //  while (i <= data->min_index - 1)
+  //  {
+  //    rotate_a(data);
+  //    i++;
+  //  }
+  //}
 }
 
 void  LSD(t_data *data)
@@ -293,7 +349,7 @@ void  LSD(t_data *data)
   //data->pos_a = malloc(sizeof(int) * data->len_b);
   //data->pos_b = malloc(sizeof(int) * data->len_b);
   //data->s_a = data->len / 2;
-  while (i < len)
+  while (i < 5)
   {
     data->len = node_size(data->stack_a);
     data->len_b = node_size(data->stack_b);
@@ -309,6 +365,8 @@ void  LSD(t_data *data)
     p_a(data);
     free(data->pos_a);
     free(data->pos_b);
+    free(data->p);
+    //free ptr of finding best element
     //printf("%d", data->best);
 
     //free(data->pos_a);
@@ -321,22 +379,25 @@ void  LSD(t_data *data)
     //loop again
     i++;
   }
+  //check_small_top(data);
 
-
-  //while (i < data->len_b)
-  //{
-  //  //if (data->pos_b[i] < 0)
-  //  //  printf("hey\n");
-  //  printf("%d\n", data->pos_b[i]);
-  //  i++;
-  //}
-  //printf("---------\n");
-  //i = 0;
-  //while (i < data->len_b)
-  //{
-  //  printf("%d\n", data->pos_a[i]);
-  //  i++;
-  //}
+    i = 0;
+    //i = 0;
+    printf("\n\n---pos---\n");
+    while (i < data->len_b)
+    {
+      //if (data->pos_b[i] < 0)
+      //  printf("hey\n");
+      printf("%d\n", data->pos_b[i]);
+      i++;
+    }
+    printf("---------\n");
+    i = 0;
+    while (i < data->len_b)
+    {
+      printf("%d\n", data->pos_a[i]);
+      i++;
+    }
 }
 
 

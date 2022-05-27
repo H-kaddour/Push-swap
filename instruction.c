@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:49:08 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/09 17:20:55 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/27 14:31:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -126,6 +126,7 @@ void  rotate_a(t_data *data)
   data->stack_a = data->stack_a->link;
   next->link->link = NULL;
   next = NULL;
+  //ft_putstr_fd("ra\n", 1);
 }
 
 void  rotate_b(t_data *data)
@@ -144,6 +145,7 @@ void  rotate_b(t_data *data)
   data->stack_b = data->stack_b->link;
   next->link->link = NULL;
   next = NULL;
+  //ft_putstr_fd("rb\n", 1);
 }
 
 void  rotate_ab(t_data *data)
@@ -228,6 +230,7 @@ void  reverse_a(t_data *data)
   data->stack_a = next->link;
   next->link = NULL;
   next = NULL;
+  //ft_putstr_fd("rra\n", 1);
 }
 
 void  reverse_b(t_data *data)
@@ -246,6 +249,7 @@ void  reverse_b(t_data *data)
   data->stack_b = next->link;
   next->link = NULL;
   next = NULL;
+  //ft_putstr_fd("rrb\n", 1);
 }
 
 void  reverse_ab(t_data *data)
@@ -266,6 +270,7 @@ void  p_b(t_data *data)
   add_to_stack_abs(&data->stack_a, &data->stack_b);
   //add_to_stackb(data, 0);
   pop_that_shit(&data->stack_a);
+  //ft_putstr_fd("pb\n", 1);
   //pop_that_shit(data, 0);
   //data->stack_a = pop_that_shit(stack);
 }
@@ -278,6 +283,7 @@ void  p_a(t_data *data)
   add_to_stack_abs(&data->stack_b, &data->stack_a);
   //add_to_stackb(data, 1);
   pop_that_shit(&data->stack_b);
+  //ft_putstr_fd("pa\n", 1);
   //pop_that_shit(data, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/26 20:35:00 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/27 12:27:45 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,8 @@ typedef struct t_pusha
   t_list  *trav_b;
   //t_list  *best;
   int     best;
+  int     min_index;
+  int     *p;
 } t_data;
 
 void    get_arg(t_data *data, char **av);
@@ -88,5 +90,7 @@ void    error_push_P(char *str);
 void    algorhythm(t_data *data);
 void    LSD(t_data *data);
 int     find_big_num(t_list *node, t_data *data);
+//int     node_index(t_list *stack, int index);
+t_list  *find_min(t_list *node, t_data *data);
 
 #endif
