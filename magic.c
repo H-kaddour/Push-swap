@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/27 18:54:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/29 18:57:35 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,12 @@ int find_big_num(t_list *node, t_data *data)
   int     i;
 
   //i = 0;
+  //segfault here
+  if (node_size(node) == 0)
+  {
+    printf("exit");
+    exit(0);
+  }
   next = node->link;
   while (node)
   {
@@ -233,6 +239,7 @@ int find_best_element(t_data  *data)
 void  push_B(t_data *data)
 {
   int i;
+  int sign;
 
   if (data->pos_b[data->best] >= 0)
   {
@@ -247,7 +254,9 @@ void  push_B(t_data *data)
   if (data->pos_b[data->best] < 0)
   {
     i = 0;
-    while (i < data->pos_b[data->best])
+    sign = data->pos_b[data->best] * -1;
+    //while (i < data->pos_b[data->best])
+    while (i < sign)
     {
       reverse_b(data);
       i++;
@@ -261,6 +270,7 @@ void  push_B(t_data *data)
 void  push_A(t_data *data)
 {
   int i;
+  int sign;
 
   if (data->pos_a[data->best] >= 0)
   {
@@ -274,7 +284,8 @@ void  push_A(t_data *data)
   if (data->pos_a[data->best] < 0)
   {
     i = 0;
-    while (i < data->pos_a[data->best])
+    sign = data->pos_a[data->best] * -1;
+    while (i < sign /*data->pos_a[data->best]*/)
     {
       reverse_a(data);
       i++;
@@ -349,7 +360,7 @@ void  LSD(t_data *data)
   //data->pos_a = malloc(sizeof(int) * data->len_b);
   //data->pos_b = malloc(sizeof(int) * data->len_b);
   //data->s_a = data->len / 2;
-  while (i < 5)
+  while (i < len)
   {
     data->len = node_size(data->stack_a);
     data->len_b = node_size(data->stack_b);
@@ -379,25 +390,25 @@ void  LSD(t_data *data)
     //loop again
     i++;
   }
-  //check_small_top(data);
+  check_small_top(data);
 
-    i = 0;
     //i = 0;
-    printf("\n\n---pos---\n");
-    while (i < data->len_b)
-    {
-      //if (data->pos_b[i] < 0)
-      //  printf("hey\n");
-      printf("%d\n", data->pos_b[i]);
-      i++;
-    }
-    printf("---------\n");
-    i = 0;
-    while (i < data->len_b)
-    {
-      printf("%d\n", data->pos_a[i]);
-      i++;
-    }
+    ////i = 0;
+    //printf("\n\n---pos---\n");
+    //while (i < data->len_b)
+    //{
+    //  //if (data->pos_b[i] < 0)
+    //  //  printf("hey\n");
+    //  printf("%d\n", data->pos_b[i]);
+    //  i++;
+    //}
+    //printf("---------\n");
+    //i = 0;
+    //while (i < data->len_b)
+    //{
+    //  printf("%d\n", data->pos_a[i]);
+    //  i++;
+    //}
 }
 
 

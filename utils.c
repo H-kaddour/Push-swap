@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/17 18:50:27 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/29 15:19:04 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -198,8 +198,8 @@ void  get_arg(t_data *data, char **av)
     //  }
     //  break ;
     //}
-    while (av[j][i])
-    {
+    ///while (av[j][i])
+    ///{
       //if (!data->str)
       //{
       //  data->str = malloc(1);
@@ -213,8 +213,8 @@ void  get_arg(t_data *data, char **av)
       //roll_that_join(data);
       //data->tmp = join_space(data);
       //join_space(data);
-      i++;
-    }
+      ///i++;
+    ///}
     data->arg = av[j];
     join_space(data);
     //data->str = ft_strjoin(data->str, data->ptr);

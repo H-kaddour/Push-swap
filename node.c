@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:47:29 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/16 09:51:53 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/28 18:03:53 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -160,7 +160,7 @@ void  add_to_stack_abs(t_list **node, t_list **nudes)
   *nudes = head;
 }
 
-//logic zwin wlkin mabghitch return just struct saving
+//logic ta3 likhaso li7wih baghi li3dbo mzn wlkin mabghitch return just struct saving
 //t_list  *add_to_stack2(t_list *s_a, t_list *s_b)
 //{
 //  t_list  *head;

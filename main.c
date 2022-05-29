@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/27 15:37:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/29 18:53:05 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,21 +79,23 @@ int main(int ac, char **av)
   //bigg = data.stack_a;
   //find_big_num(bigg, &data);
   //p_b(&data);
-  int i = 0;
-  printf("tmp\n");
-  while (i < data.len)
-  {
-    printf("%d ", data.tmp[i]);
-    i++;
-  }
-  printf("\n------------\n");
-  LSD(&data);
+
+  //int i = 0;
+  //printf("tmp\n");
+  //while (i < data.len)
+  //{
+  //  printf("%d ", data.tmp[i]);
+  //  i++;
+  //}
+  //printf("\n------------\n");
+
+  //LSD(&data);
   //while (1);
 
   //p_b(&data);
   //p_b(&data);
 
-  //LSD(&data);
+  LSD(&data);
 
   t_list  *trav_b;
   trav_b = data.stack_b;
