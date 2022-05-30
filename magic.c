@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/29 18:57:35 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/30 18:21:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,122 @@
 //  return (next);
 //}
 
-int big_index(t_list *node, t_data *data)
+void  check_part(t_data *data, int i)
 {
+  int k;
+  int even;
+  int odd;
+  t_list  *trav;
+  int j;
+  int m;
+
+  trav = data->stack_a;
+  if (data->len_b % 2 == 0)
+  {
+    even = data->s_b;
+    odd = (data->s_b) * -1;
+  }
+  //odd
+  if (data->len_b % 2 == 1)
+  {
+    even = data->s_b + 1;
+    odd = (data->s_b) * -1;
+  }
+  j = 0;
+  while (j < even)
+  {
+    if (j == i)
+    {
+      data->big_i = i;
+      break ;
+    }
+    j++;
+  }
+  k = odd;
+  m = j;
+  j = -i;
+  //m = odd * -1;
+  while (j < odd)
+  {
+    if (i == m)
+    {
+      data->big_i = k;
+      break ;
+    }
+    j++;
+    k++;
+    m++;
+  }
+}
+
+void  big_index(t_list *node, t_data *data)
+{
+  //int i;
+  //int k;
+  //int even;
+  //int odd;
+  //t_list  *trav;
+
+  //i = 0;
+  //trav = data->stack_a;
+  //even
+  //if (data->len_b % 2 == 0)
+  //{
+  //  even = data->s_a + 1;
+  //  odd = (data->s_a) * -1;
+  //}
+  ////odd
+  //if (data->len_b % 2 == 1)
+  //{
+  //  even = data->s_a;
+  //  odd = (data->s_a - 1) * -1;
+  //}
+  //while (trav)
+  //{
+  //  while (i < even)
+  //  {
+  //    if (trav->data == node->data)
+  //    {
+  //      data->big_i = i;
+  //      break ;
+  //    }
+  //    trav = trav->link;
+  //    i++;
+  //  }
+  //  k = -1;
+  //  while (k > odd)
+  //  {
+  //    if (trav->data == node->data)
+  //    {
+  //      data->big_i = k;
+  //      break ;
+  //    }
+  //    trav = trav->link;
+  //    k--;
+  //  }
+  //}
+  //while (i < even)
+  //{
+  //  if (trav->data == node->data)
+  //  {
+  //    data->big_i = i;
+  //    break ;
+  //  }
+  //  trav = trav->link;
+  //  i++;
+  //}
+  //k = -1;
+  //while (k < odd)
+  //{
+  //  if (trav->data == node->data)
+  //  {
+  //    data->big_i = k;
+  //    break ;
+  //  }
+  //  trav = trav->link;
+  //  k--;
+  //}
+
   t_list  *trav;
   int i;
 
@@ -46,13 +160,15 @@ int big_index(t_list *node, t_data *data)
     trav = trav->link;
     i++;
   }
-  return (i);
+  check_part(data, i);
+  //return (i);
 }
 
-int find_big_num(t_list *node, t_data *data)
+//int find_big_num(t_list *node, t_data *data)
+void find_big_num(t_list *node, t_data *data)
 {
   t_list  *next;
-  int     i;
+  //int     i;
 
   //i = 0;
   //segfault here
@@ -73,10 +189,11 @@ int find_big_num(t_list *node, t_data *data)
     node = node->link;
     //i++;
   }
-  i = big_index(next, data);
+  //i = big_index(next, data);
+  big_index(next, data);
   //printf("%d\n", i);
   //printf("%d\n", next->data);
-  return (i);
+  //return (i);
 }
 
 int node_index(t_list *stack, int index)
@@ -126,6 +243,14 @@ void  fill_pos_b(t_data *data)
     }
     data->trav_b = data->trav_b->link;
   }
+  i = 0;
+  printf("\n---pos_b\n");
+  while (i < data->len_b)
+  {
+    printf("| %d |\n", data->pos_b[i]);
+    i++;
+  }
+  printf("\n");
 }
 
 
@@ -134,16 +259,21 @@ void  fill_pos_a(t_data *data)
   int i;
   int j;
   int k;
-  int big_i;
+  //int big_i;
 
   i = 0;
   while (i < data->len_b)
   {
     j = 0;
-    big_i = find_big_num(data->stack_a, data);
-    if (node_index(data->stack_b, i) > big_i)
+    //data->big_i = find_big_num(data->stack_a, data);
+    find_big_num(data->stack_a, data);
+    if (node_index(data->stack_b, i) > data->big_i)
     {
-      data->pos_a[i] = big_i;
+      data->pos_a[i] = data->big_i;
+      //if (big_i <= data->s_a + 1)
+      //  data->pos_a[i] = big_i;
+      //else if (big_i > data->s_a + 1)
+      //  data->pos_a[i] = 1;
       //data->pos_a[i] = find_big_num(data->stack_a, data);
     }
     if (node_index(data->stack_b, i) < data->stack_a->data && \
@@ -184,6 +314,13 @@ void  fill_pos_a(t_data *data)
     //}
     //printf("%d \n", data->pos_a[i]);
     //break ;
+    i++;
+  }
+  i = 0;
+  printf("\n---pos_a\n");
+  while (i < data->len_b)
+  {
+    printf("| %d |\n", data->pos_a[i]);
     i++;
   }
 }
@@ -360,6 +497,7 @@ void  LSD(t_data *data)
   //data->pos_a = malloc(sizeof(int) * data->len_b);
   //data->pos_b = malloc(sizeof(int) * data->len_b);
   //data->s_a = data->len / 2;
+  //print_youness_ass(data);
   while (i < len)
   {
     data->len = node_size(data->stack_a);
@@ -367,13 +505,14 @@ void  LSD(t_data *data)
     data->pos_a = malloc(sizeof(int) * data->len_b);
     data->pos_b = malloc(sizeof(int) * data->len_b);
     data->s_a = data->len / 2;
+    data->s_b = data->len_b / 2;
     fill_pos_b(data);
     fill_pos_a(data);
-    //data->best = find_best_element(data);
     data->best = find_best_element(data);
     push_B(data);
     push_A(data);
     p_a(data);
+    //print_youness_ass(data);
     free(data->pos_a);
     free(data->pos_b);
     free(data->p);

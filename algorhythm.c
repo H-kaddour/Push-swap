@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/29 19:09:39 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/30 10:02:50 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,7 +102,7 @@ void  get_sequence(t_data *data)
   value = data->cache[value];
   data->len_seq = value /*+ 1*/;
   //data->seq = malloc(sizeof(int) * data->cache[data->len - 1] + 1);
-  data->seq = malloc(sizeof(int) * data->len_seq - 1);
+  data->seq = malloc(sizeof(int) * data->len_seq);
   while (i >= 0)
   {
     if (data->cache[i] == value)
@@ -119,15 +119,16 @@ void  get_sequence(t_data *data)
   //i = 0;
   //data->len_seq = j;
   //printf("cache number:\n");
-  j--;
-  printf("sequence\n");
-  while (j >= 0)
-  {
-    printf("%d ", data->seq[j]);
-    j--;
-    //i++;
-  }
-  printf("\n------------\n");
+  //j--;
+  //j = data->len_seq;
+  //printf("sequence\n");
+  //while (j >= 0)
+  //{
+  //  printf("%d ", data->seq[j]);
+  //  j--;
+  //  //i++;
+  //}
+  //printf("\n------------\n");
 }
 
 void  be_ones(t_data *data)
@@ -228,7 +229,7 @@ void  init_stacka_LIS(t_data *data)
     j = 0;
     trav_a = data->stack_a;
     //printf("%d\n", trav_a->data);
-    while (j <= data->len_seq - 1 )
+    while (j <= data->len_seq )
     {
       if (data->seq[j] == trav_a->data)
       {
@@ -236,7 +237,7 @@ void  init_stacka_LIS(t_data *data)
         //print_youness_ass(data);
         break ;
       }
-      if (j == data->len_seq - 1 /*- 1*/)
+      if (j == data->len_seq /*- 1*/)
       {
         p_b(data);
         //print_youness_ass(data);
