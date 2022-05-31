@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/30 10:02:50 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/31 15:02:42 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -307,6 +307,7 @@ void  LIS_LSD(t_data *data)
 
   get_sequence(data);
   init_stacka_LIS(data);
+  //print_youness_ass(data);
 }
 
 void  algorhythm(t_data *data)

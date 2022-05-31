@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/30 11:27:11 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/31 17:41:40 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ typedef struct t_pusha
   int     *p;
   //big index
   int     big_i;
+  int     down;
 } t_data;
 
 void    get_arg(t_data *data, char **av);

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/30 18:21:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/05/31 19:06:41 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,21 +37,21 @@ void  check_part(t_data *data, int i)
   int k;
   int even;
   int odd;
-  t_list  *trav;
+  //t_list  *trav;
   int j;
   int m;
 
-  trav = data->stack_a;
-  if (data->len_b % 2 == 0)
+  //trav = data->stack_a;
+  if (data->len % 2 == 0)
   {
-    even = data->s_b;
-    odd = (data->s_b) * -1;
+    even = data->s_a;
+    odd = (data->s_a) * -1;
   }
   //odd
-  if (data->len_b % 2 == 1)
+  if (data->len % 2 == 1)
   {
-    even = data->s_b + 1;
-    odd = (data->s_b) * -1;
+    even = data->s_a + 1;
+    odd = (data->s_a) * -1;
   }
   j = 0;
   while (j < even)
@@ -71,7 +71,7 @@ void  check_part(t_data *data, int i)
   {
     if (i == m)
     {
-      data->big_i = k;
+      data->big_i = k + 1;
       break ;
     }
     j++;
@@ -160,7 +160,8 @@ void  big_index(t_list *node, t_data *data)
     trav = trav->link;
     i++;
   }
-  check_part(data, i);
+  data->big_i = i;
+  //check_part(data, i);
   //return (i);
 }
 
@@ -243,16 +244,53 @@ void  fill_pos_b(t_data *data)
     }
     data->trav_b = data->trav_b->link;
   }
-  i = 0;
-  printf("\n---pos_b\n");
-  while (i < data->len_b)
-  {
-    printf("| %d |\n", data->pos_b[i]);
-    i++;
-  }
-  printf("\n");
+  //i = 0;
+  //printf("\n---pos_b\n");
+  //while (i < data->len_b)
+  //{
+  //  printf("| %d |\n", data->pos_b[i]);
+  //  i++;
+  //}
+  //printf("\n");
 }
 
+void  do_it(t_data *data)
+{
+  int i;
+  int j;
+
+  //i = 0;
+  //j = -1;
+  //while (i <= data->len)
+  //{
+  //  if (i == data->big_i)
+  //  {
+  //    data->big_i = j;
+  //    break ;
+  //  }
+  //  if (i >= data->s_a)
+  //    j--;
+  //  if (i == data->len)
+  //    data->big_i = 0;
+  //  i++;
+  //}
+  i = data->s_a + 1;
+  //j = data->s_a * -1;
+  j = data->down * -1;
+  while (i <= data->len)
+  {
+    if (i == data->big_i)
+    {
+      data->big_i = j;
+      break ;
+    }
+    if (i == data->len - 1)
+      data->big_i = 0;
+      //data->pos_a[i] = j;
+    i++;
+    j++;
+  }
+}
 
 void  fill_pos_a(t_data *data)
 {
@@ -262,20 +300,36 @@ void  fill_pos_a(t_data *data)
   //int big_i;
 
   i = 0;
+  data->down = data->s_a;
+  //if (data->len % 2 == 0)
+  //{
+  //  data->s_a += 0;
+  //}
+  //data->big_i -= 1;
+  if (data->len % 2 == 1)
+  {
+    data->s_a += 1;
+  }
   while (i < data->len_b)
   {
     j = 0;
     //data->big_i = find_big_num(data->stack_a, data);
     find_big_num(data->stack_a, data);
-    if (node_index(data->stack_b, i) > data->big_i)
-    {
+    //if (node_index(data->stack_b, i) > data->big_i)
+    //{
+    if (data->big_i <= data->s_a)
       data->pos_a[i] = data->big_i;
+    if (data->big_i > data->s_a)
+    {
+      do_it(data);
+      data->pos_a[i] = data->big_i;
+    }
       //if (big_i <= data->s_a + 1)
       //  data->pos_a[i] = big_i;
       //else if (big_i > data->s_a + 1)
       //  data->pos_a[i] = 1;
       //data->pos_a[i] = find_big_num(data->stack_a, data);
-    }
+    //}
     if (node_index(data->stack_b, i) < data->stack_a->data && \
         node_index(data->stack_b, i) > node_index(data->stack_a, data->len))
     {
@@ -293,6 +347,7 @@ void  fill_pos_a(t_data *data)
       j++;
     }
     k = -(1);
+    //k = 0;
     j = data->len - 1;
     while (j > data->s_a)
     {
@@ -304,6 +359,7 @@ void  fill_pos_a(t_data *data)
         //break men loop
       }
       k--;
+      //k++;
       j--;
     }
     //if pos_a[0] == empty here go to this condition and add big_index in the pos_a
@@ -316,18 +372,19 @@ void  fill_pos_a(t_data *data)
     //break ;
     i++;
   }
-  i = 0;
-  printf("\n---pos_a\n");
-  while (i < data->len_b)
-  {
-    printf("| %d |\n", data->pos_a[i]);
-    i++;
-  }
+  //i = 0;
+  //printf("\n---pos_a\n");
+  //while (i < data->len_b)
+  //{
+  //  printf("| %d |\n", data->pos_a[i]);
+  //  i++;
+  //}
 }
 
 //Compare operation:
 //1) if stack_b->data < stack_b->data && stack_b > last element of stack_a
 //t_list  *find_best_element(t_data *data)
+
 int find_best_element(t_data  *data)
 {
   //t_list  *node;
