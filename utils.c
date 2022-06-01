@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/29 15:19:04 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/01 16:36:08 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -167,6 +167,27 @@ void  str_nani(t_data *data)
 //	//return ((char *) ptr - len);
 //}
 
+int duplicate_num(t_data *data)
+{
+  int i;
+  int j;
+
+  i = 0;
+  data->len = node_size(data->stack_a);
+  while (i < data->len)
+  {
+    j = i + 1;
+    while (j < data->len)
+    {
+      if (node_index(data->stack_a, i) == node_index(data->stack_a, j))
+        return (1);
+      j++;
+    }
+    i++;
+  }
+  return (0);
+}
+
 void  get_arg(t_data *data, char **av)
 {
   //t_list  *head;
@@ -198,23 +219,23 @@ void  get_arg(t_data *data, char **av)
     //  }
     //  break ;
     //}
-    ///while (av[j][i])
-    ///{
+    //while (av[j][i])
+    //{
       //if (!data->str)
       //{
       //  data->str = malloc(1);
       //  data->str[0] = 0;
       //}
       //handling other character like alphabet other
-      //if (ft_isdigit(av[j][i]) == 0)
+      //if (!ft_isdigit(av[j][i]))
       //  error_push_P("The arg has ur sister on :D");
       //data->arg = av[j];
       //data->str = av[j];
       //roll_that_join(data);
       //data->tmp = join_space(data);
       //join_space(data);
-      ///i++;
-    ///}
+      //i++;
+    //}
     data->arg = av[j];
     join_space(data);
     //data->str = ft_strjoin(data->str, data->ptr);
@@ -245,7 +266,40 @@ void  get_arg(t_data *data, char **av)
   //while (1);
   //data->str = data->jwan;
   ////while (1);
+  i = 0;
+  if (data->str[i] == ' ')
+  {
+    while (data->str[++i])
+    {
+     // if (data->str[i] == ' ')
+     //   i++;
+      if (data->str[i] != ' ')
+        break ;
+      //if (data->str[i] == '\0')
+      //  error_push_P("arg empty only spaces");
+      i++;
+    }
+    if (data->str[i] == '\0')
+      error_push_P("arg empty only spaces");
+  }
+  //if (data->str[i] == ' ')
+  //  error_push_P("empty arg only space :/");
   data->split = ft_split(data->str, ' ');
+  i = 0;
+  while (data->split[i])
+  {
+    j = 0;
+    while (data->split[i][j])
+    {
+      if (!ft_isdigit(data->split[i][j]))
+        error_push_P("those are not number :/");
+      j++;
+    }
+    //if (ft_atoi(data->split[i]) == 0)
+    //  error_push_P("INT MAX");
+    i++;
+  }
+
   //i = 0;
   //while (data->split[i])
   //{

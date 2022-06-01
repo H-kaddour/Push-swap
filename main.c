@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 11:27:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/01 18:24:36 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,17 @@ int main(int ac, char **av)
   //data.str[0] = 0;
   data.str = ft_strdup("");
   get_arg(&data, av);
-  algorhythm(&data);
+  //this function check if the numbers are sorted or not
+  check_sorted(&data);
+  //here function check size of node 3 5 and more to sort.
+  /*here*/
+  if (data.len <= 5)
+    sort_small_num(&data);
+  if (data.len > 5)
+  {
+    algorhythm(&data);
+    LSD(&data);
+  }
   //bigg = data.stack_a;
   //find_big_num(bigg, &data);
   //p_b(&data);
@@ -95,8 +105,8 @@ int main(int ac, char **av)
   //p_b(&data);
   //p_b(&data);
   //print_youness_ass(&data);
-  LSD(&data);
 
+  //while (1);
   //t_list  *trav_b;
   //trav_b = data.stack_b;
   //printf("\nstack B:\n");
@@ -111,14 +121,14 @@ int main(int ac, char **av)
   //rotate_a(&data);
   //reverse_a(&data);
 
-  //t_list  *trav_a;
-  //trav_a = data.stack_a;
-  //printf("stack A:\n");
-  //while (trav_a != NULL)
-  //{
-  //  printf("| %d |\n", trav_a->data);
-  //  trav_a = trav_a->link;
-  //}
+  t_list  *trav_a;
+  trav_a = data.stack_a;
+  printf("stack A:\n");
+  while (trav_a != NULL)
+  {
+    printf("| %d |\n", trav_a->data);
+    trav_a = trav_a->link;
+  }
 
   //while (1);
 
@@ -131,6 +141,7 @@ int main(int ac, char **av)
   //  i++;
   //}
   //printf("%s", data.str);
+  return (0);
 }
 
 

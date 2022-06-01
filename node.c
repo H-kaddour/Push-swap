@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:47:29 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/28 18:03:53 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:34:36 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,8 @@ void  fill_stack_node(t_data *data)
     i++;
   }
   next = NULL;
+  if (duplicate_num(data))
+    error_push_P("duplicate number :/");
   //t_list  *trav;
   //trav = data->stack_a;
   //while (trav)

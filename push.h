@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/31 17:41:40 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/01 17:56:32 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -94,8 +94,11 @@ void    algorhythm(t_data *data);
 void    LSD(t_data *data);
 void    find_big_num(t_list *node, t_data *data);
 //int     find_big_num(t_list *node, t_data *data);
-//int     node_index(t_list *stack, int index);
+int     node_index(t_list *stack, int index);
 t_list  *find_min(t_list *node, t_data *data);
-void  print_youness_ass(t_data *data);
+void    print_youness_ass(t_data *data);
+int     duplicate_num(t_data *data);
+void    check_sorted(t_data *data);
+void    sort_small_num(t_data *data);
 
 #endif
