@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/05/31 19:06:41 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/01 11:27:15 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -281,7 +281,7 @@ void  do_it(t_data *data)
   {
     if (i == data->big_i)
     {
-      data->big_i = j;
+      data->big_i = j + 1;
       break ;
     }
     if (i == data->len - 1)
@@ -333,7 +333,8 @@ void  fill_pos_a(t_data *data)
     if (node_index(data->stack_b, i) < data->stack_a->data && \
         node_index(data->stack_b, i) > node_index(data->stack_a, data->len))
     {
-      data->pos_a[i] = i;
+      //data->pos_a[i] = i;
+      data->pos_a[i] = 0;
     }
     while (j < data->s_a /*+ 1*/)
     {
