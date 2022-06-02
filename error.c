@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:52:27 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 17:06:19 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/02 12:21:39 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,5 +25,6 @@ void  check_sorted(t_data *data)
     i++;
   }
   if (i == data->len)
-    error_push_P("those number are sorted");
+    exit(127);
+    //error_push_P("those number are sorted");
 }

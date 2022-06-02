@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 11:27:15 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/02 19:27:35 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -567,6 +567,8 @@ void  LSD(t_data *data)
     fill_pos_b(data);
     fill_pos_a(data);
     data->best = find_best_element(data);
+    printf("**%d\n", data->best);
+    //here check for smart rotate
     push_B(data);
     push_A(data);
     p_a(data);

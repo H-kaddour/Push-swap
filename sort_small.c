@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:34:47 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 18:42:48 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/02 16:16:50 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,33 +45,91 @@ void  sort_three(t_data *data)
     reverse_a(data);
 }
 
-void  sort_four(t_data *data)
+void  sort_four(t_data *data, int check)
 {
-  int i;
   t_list  *min;
   t_list  *trav_a;
 
-  i = 0;
   min = find_min(data->stack_a, data);
   trav_a = data->stack_a;
-  printf("%d\n", min->data);
-  while (trav_a != min)
+  //printf("%d\n", min->data);
+  while (trav_a->data != min->data)
   {
     rotate_a(data);
-    trav_a = trav_a->link;
+    trav_a = data->stack_a;
+    //trav_a = trav_a->link;
   }
-  printf("**%d\n", trav_a->data);
-  //p_b(data);
+  //printf("**%d\n", trav_a->data);
+  p_b(data);
+  //if (check == 1)
+  //  p_b(data);
+  sort_three(data);
+  if (check == 0)
+    p_a(data);
+}
+
+void  sort_five(t_data *data)
+{
+  int i;
+
+  i = 0;
+  //while (i < 2)
+  //{
+  //  p_b(data);
+  //  i++;
+  //}
   //sort_three(data);
+  //if (node_index(data->stack_b, 0) < node_index(data->stack_b, 1))
+  //  swap_b(data);
+  //p_a(data);
+  //rotate_a(data);
+  //p_a(data);
+  //i = 0;
+  //while (i < 2)
+  //{
+  //  p_a(data);
+  //  i++;
+  //}
+  //p_b(data);
+  t_list  *trav;
+  t_list  *min;
+
+  data->s_a = data->len /2 + 1;
+  trav = data->stack_a;
+  min = find_min(data->stack_a, data);
+  //printf("%d\n", min->data);
+  while (trav->data != min->data)
+  {
+    trav = trav->link;
+    i++;
+  }
+  trav = data->stack_a;
+  while (trav->data != min->data)
+  {
+    if (i <= data->s_a)
+      rotate_a(data);
+    if (i > data->s_a)
+      reverse_a(data);
+    trav = data->stack_a;
+  }
+  p_b(data);
+  sort_four(data, 1);
+  if (node_index(data->stack_b, 0) < node_index(data->stack_b, 1))
+    swap_a(data);
+  p_a(data);
+  p_a(data);
+  //rotate_a(data);
   //p_a(data);
 }
 
 void  sort_small_num(t_data *data)
 {
+  if (data->len == 2)
+    swap_a(data);
   if (data->len == 3)
     sort_three(data);
   if (data->len == 4)
-    sort_four(data);
-  //if (data->len == 5)
-  //  sort_five(data);
+    sort_four(data, 0);
+  if (data->len == 5)
+    sort_five(data);
 }
