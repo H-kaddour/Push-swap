@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 17:56:32 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:37:11 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,14 @@
 # include <string.h>
 # include <unistd.h>
 # include "libft/libft.h"
+
+typedef struct grab_line
+{
+	char		*ptr;
+	char		*tmp;
+	char		*buff;
+	char		*line;
+}	t_gnl;
 
 typedef struct s_list
 {
@@ -57,29 +65,33 @@ typedef struct t_pusha
   //big index
   int     big_i;
   int     down;
+  //bonus cheker var
+  char    *input;
+  char    *inst;
+  char    **sp_inst;
 } t_data;
 
 void    get_arg(t_data *data, char **av);
 t_list  *add_node(t_list *node, int data);
 t_list  *add_to_stacka(t_list *node, int data);
 //void    fill_node(t_list *head, int data);
-void    swap_a(t_data *data);
-void    swap_b(t_data *data);
-void    swap_ab(t_data *data);
+void    swap_a(t_data *data, int check);
+void    swap_b(t_data *data, int check);
+void    swap_ab(t_data *data, int check);
 //t_list  *swap_a(t_list *head);
 //t_list  *swap_b(t_list *head);
 //t_list  *rotate_a(t_list *head);
 //t_list  *rotate_b(t_list *head);
-void    rotate_a(t_data *data);
-void    rotate_b(t_data *data);
-void    rotate_ab(t_data *data);
-void    reverse_a(t_data *data);
-void    reverse_b(t_data *data);
-void    reverse_ab(t_data *data);
+void    rotate_a(t_data *data, int check);
+void    rotate_b(t_data *data, int check);
+void    rotate_ab(t_data *data, int check);
+void    reverse_a(t_data *data, int check);
+void    reverse_b(t_data *data, int check);
+void    reverse_ab(t_data *data, int check);
 //t_list  *reverse_a(t_list *head);
 //t_list  *reverse_b(t_list *head);
-void    p_a(t_data *data);
-void    p_b(t_data *data);
+void    p_a(t_data *data, int check);
+void    p_b(t_data *data, int check);
 void    add_to_stackb(t_data *data, int check);
 t_list  *add_to_stack2(t_list *s_a, t_list *s_b);
 int     node_size(t_list  *node);
@@ -100,5 +112,8 @@ void    print_youness_ass(t_data *data);
 int     duplicate_num(t_data *data);
 void    check_sorted(t_data *data);
 void    sort_small_num(t_data *data);
+int     check_smart_rotates(t_data *data);
+//gnl
+char    *grab_line(int fd);
 
 #endif

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:49:08 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 18:10:27 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 14:36:40 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@
 //  ft_putstr_fd(str, 1);
 //}
 
-void  swap_a(t_data *data)
+void  swap_a(t_data *data, int check)
 {
   t_list  *next;
 
@@ -54,10 +54,11 @@ void  swap_a(t_data *data)
   next->link = data->stack_a;
   data->stack_a = next;
   next = NULL;
-  ft_putstr_fd("sa\n", 1);
+  if (check == 1)
+    ft_putstr_fd("sa\n", 1);
 }
 
-void  swap_b(t_data *data)
+void  swap_b(t_data *data, int check)
 {
   t_list  *next;
 
@@ -71,14 +72,17 @@ void  swap_b(t_data *data)
   next->link = data->stack_b;
   data->stack_b = next;
   next = NULL;
-  ft_putstr_fd("sb\n", 1);
+  if (check == 1)
+    ft_putstr_fd("sb\n", 1);
 }
 
 
-void  swap_ab(t_data *data)
+void  swap_ab(t_data *data, int check)
 {
-  swap_a(data);
-  swap_b(data);
+  swap_a(data, 0);
+  swap_b(data, 0);
+  if (check == 1)
+    ft_putstr_fd("ss\n", 1);
   //data->stack_a = swap_a(data->stack_a);
   //data->stack_b = swap_b(data->stack_b);
 }
@@ -110,7 +114,7 @@ void  swap_ab(t_data *data)
 //  return (next);
 //}
 
-void  rotate_a(t_data *data)
+void  rotate_a(t_data *data, int check)
 {
   t_list  *next;
 
@@ -126,10 +130,11 @@ void  rotate_a(t_data *data)
   data->stack_a = data->stack_a->link;
   next->link->link = NULL;
   next = NULL;
-  ft_putstr_fd("ra\n", 1);
+  if (check == 1)
+    ft_putstr_fd("ra\n", 1);
 }
 
-void  rotate_b(t_data *data)
+void  rotate_b(t_data *data, int check)
 {
   t_list  *next;
 
@@ -145,13 +150,16 @@ void  rotate_b(t_data *data)
   data->stack_b = data->stack_b->link;
   next->link->link = NULL;
   next = NULL;
-  ft_putstr_fd("rb\n", 1);
+  if (check == 1)
+    ft_putstr_fd("rb\n", 1);
 }
 
-void  rotate_ab(t_data *data)
+void  rotate_ab(t_data *data, int check)
 {
-  rotate_a(data);
-  rotate_b(data);
+  rotate_a(data, 0);
+  rotate_b(data, 0);
+  if (check == 1)
+    ft_putstr_fd("rr\n", 1);
   //data->stack_a = rotate_a(data->stack_a);
   //data->stack_b = rotate_b(data->stack_b);
 }
@@ -214,7 +222,7 @@ void  rotate_ab(t_data *data)
 //}
 
 //hicham nadi wlkin ba9i 5asou li inikou just a lil bit
-void  reverse_a(t_data *data)
+void  reverse_a(t_data *data, int check)
 {
   t_list  *next;
 
@@ -230,10 +238,11 @@ void  reverse_a(t_data *data)
   data->stack_a = next->link;
   next->link = NULL;
   next = NULL;
-  ft_putstr_fd("rra\n", 1);
+  if (check == 1)
+    ft_putstr_fd("rra\n", 1);
 }
 
-void  reverse_b(t_data *data)
+void  reverse_b(t_data *data, int check)
 {
   t_list  *next;
 
@@ -249,18 +258,21 @@ void  reverse_b(t_data *data)
   data->stack_b = next->link;
   next->link = NULL;
   next = NULL;
-  ft_putstr_fd("rrb\n", 1);
+  if (check == 1)
+    ft_putstr_fd("rrb\n", 1);
 }
 
-void  reverse_ab(t_data *data)
+void  reverse_ab(t_data *data, int check)
 {
-  reverse_a(data);
-  reverse_b(data);
+  reverse_a(data, 0);
+  reverse_b(data, 0);
+  if (check == 1)
+    ft_putstr_fd("rrr\n", 1);
   //data->stack_a = reverse_a(data->stack_a);
   //data->stack_b = reverse_b(data->stack_b);
 }
 
-void  p_b(t_data *data) 
+void  p_b(t_data *data, int check) 
 {
   //t_list  *next;
 
@@ -270,12 +282,13 @@ void  p_b(t_data *data)
   add_to_stack_abs(&data->stack_a, &data->stack_b);
   //add_to_stackb(data, 0);
   pop_that_shit(&data->stack_a);
-  ft_putstr_fd("pb\n", 1);
+  if (check == 1)
+    ft_putstr_fd("pb\n", 1);
   //pop_that_shit(data, 0);
   //data->stack_a = pop_that_shit(stack);
 }
 
-void  p_a(t_data *data)
+void  p_a(t_data *data, int check)
 {
   //check if the one of the stack are empty
   //data->stack_a = add_to_stackb(data, 1);
@@ -283,7 +296,8 @@ void  p_a(t_data *data)
   add_to_stack_abs(&data->stack_b, &data->stack_a);
   //add_to_stackb(data, 1);
   pop_that_shit(&data->stack_b);
-  ft_putstr_fd("pa\n", 1);
+  if (check == 1)
+    ft_putstr_fd("pa\n", 1);
   //pop_that_shit(data, 1);
 }
 

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/01 10:36:37 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 09:16:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -233,7 +233,7 @@ void  init_stacka_LIS(t_data *data)
     {
       if (data->seq[j] == trav_a->data)
       {
-        rotate_a(data);
+        rotate_a(data, 1);
         //print_youness_ass(data);
         break ;
       }

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/02 19:27:35 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 09:45:58 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -442,7 +442,7 @@ void  push_B(t_data *data)
     //while (i < data->best)
     while (i < data->pos_b[data->best])
     {
-      rotate_b(data);
+      rotate_b(data, 1);
       i++;
     }
   }
@@ -453,7 +453,7 @@ void  push_B(t_data *data)
     //while (i < data->pos_b[data->best])
     while (i < sign)
     {
-      reverse_b(data);
+      reverse_b(data, 1);
       i++;
     }
   }
@@ -472,7 +472,7 @@ void  push_A(t_data *data)
     i = 0;
     while (i < data->pos_a[data->best])
     {
-      rotate_a(data);
+      rotate_a(data, 1);
       i++;
     }
   }
@@ -482,7 +482,7 @@ void  push_A(t_data *data)
     sign = data->pos_a[data->best] * -1;
     while (i < sign /*data->pos_a[data->best]*/)
     {
-      reverse_a(data);
+      reverse_a(data, 1);
       i++;
     }
   }
@@ -513,7 +513,7 @@ void  check_small_top(t_data *data)
   i = 0;
   while (i < data->min_index)
   {
-    rotate_a(data);
+    rotate_a(data, 1);
     i++;
   }
   //if (data->min_index == 0)
@@ -549,6 +549,7 @@ void  LSD(t_data *data)
 
   i = 0;
   int len;
+  int check;
   //loop for all those element
   //data->len = node_size(data->stack_a);
   len = node_size(data->stack_b);
@@ -567,10 +568,15 @@ void  LSD(t_data *data)
     fill_pos_b(data);
     fill_pos_a(data);
     data->best = find_best_element(data);
-    printf("**%d\n", data->best);
+    //printf("**%d\n", data->best);
     //here check for smart rotate
-    push_B(data);
-    push_A(data);
+    //here just pass 1 if smart rotate execute
+    check = check_smart_rotates(data);
+    if (check == 0)
+    {
+      push_B(data);
+      push_A(data);
+    }
     p_a(data);
     //print_youness_ass(data);
     free(data->pos_a);
