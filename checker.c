@@ -6,21 +6,21 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 15:28:13 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 19:55:45 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int cmp(char *s1, char *s2)
-{
-  int i;
-
-  i = 0;
-  while (s1[i] == s2[i] && s1[i])
-    i++;
-  return (s1[i] - s2[i]);
-}
+//int cmp(char *s1, char *s2)
+//{
+//  int i;
+//
+//  i = 0;
+//  while (s1[i] == s2[i] && s1[i])
+//    i++;
+//  return (s1[i] - s2[i]);
+//}
 
 int check_sor(t_data *data)
 {
@@ -49,88 +49,154 @@ int check_sor(t_data *data)
     //error_push_P("those number are sorted");
 }
 
-void  sort(t_data *data, char *sp_ins)
+//void  sort(t_data *data, char *sp_ins)
+void  sort(t_data *data)
 {
-  if (!cmp(sp_ins, "sa"))
+  if (!ft_strncmp(data->input, "sa", 2))
     swap_a(data, 0);
-  if (!cmp(sp_ins, "sb"))
+  else if (!ft_strncmp(data->input, "sb", 2))
     swap_b(data, 0);
-  if (!cmp(sp_ins, "ss"))
+  else if (!ft_strncmp(data->input, "ss", 2))
     swap_ab(data, 0);
-  if (!cmp(sp_ins, "ra"))
+  else if (!ft_strncmp(data->input, "ra", 2))
     rotate_a(data, 0);
-  if (!cmp(sp_ins, "rb"))
+  else if (!ft_strncmp(data->input, "rb", 2))
     rotate_b(data, 0);
-  if (!cmp(sp_ins, "rr"))
+  else if (!ft_strncmp(data->input, "rr", 2))
     rotate_ab(data, 0);
-  if (!cmp(sp_ins, "rra"))
+  else if (!ft_strncmp(data->input, "rra", 2))
     reverse_a(data, 0);
-  if (!cmp(sp_ins, "rrb"))
+  else if (!ft_strncmp(data->input, "rrb", 2))
     reverse_b(data, 0);
-  if (!cmp(sp_ins, "rrr"))
+  else if (!ft_strncmp(data->input, "rrr", 2))
     reverse_ab(data, 0);
-  if (!cmp(sp_ins, "pa"))
+  else if (!ft_strncmp(data->input, "pa", 2))
     p_a(data, 0);
-  if (!cmp(sp_ins, "pb"))
+  else if (!ft_strncmp(data->input, "pb", 2))
     p_b(data, 0);
+  
+  //if (!cmp(sp_ins, "sa"))
+  //  swap_a(data, 0);
+  //else if (!cmp(sp_ins, "sb"))
+  //  swap_b(data, 0);
+  //else if (!cmp(sp_ins, "ss"))
+  //  swap_ab(data, 0);
+  //else if (!cmp(sp_ins, "ra"))
+  //  rotate_a(data, 0);
+  //else if (!cmp(sp_ins, "rb"))
+  //  rotate_b(data, 0);
+  //else if (!cmp(sp_ins, "rr"))
+  //  rotate_ab(data, 0);
+  //else if (!cmp(sp_ins, "rra"))
+  //  reverse_a(data, 0);
+  //else if (!cmp(sp_ins, "rrb"))
+  //  reverse_b(data, 0);
+  //else if (!cmp(sp_ins, "rrr"))
+  //  reverse_ab(data, 0);
+  //else if (!cmp(sp_ins, "pa"))
+  //  p_a(data, 0);
+  //else if (!cmp(sp_ins, "pb"))
+  //  p_b(data, 0);
+
+  //else
+  //{
+  //  ft_putstr_fd("Error", 0);
+  //  exit(0);
+  //}
+}
+
+//int check_error(t_data *data)
+//{
+//  int i;
+//  int j;
+//
+//  i = 0;
+//  while (data->split[i])
+//  {
+//    j = 0;
+//    while (data->split[j])
+//    {
+//      if (ft_strncmp(data->split[i], data->split[j], 2))
+//        j++;
+//      else
+//        break ;
+//    }
+//    i++;
+//  }
+//  return (0);
+//}
+
+int check_error(char *input)
+{
+  if (!ft_strncmp(input, "sa", 2))
+    return (0);
+  //if (!ft_strncmp(input, "sa", 2) || !ft_strncmp(input, "sb", 2) || !ft_strncmp(input, "ss", 2))
+  //  return (0);
+  else if (!ft_strncmp(input, "ra", 2) || !ft_strncmp(input, "rb", 2) || !ft_strncmp(input, "rr", 2))
+    return (0);
+  else if (!ft_strncmp(input, "ra", 2) || !ft_strncmp(input, "rb", 2) || !ft_strncmp(input, "rrr", 2))
+    return (0);
+  else if (!ft_strncmp(input, "pa", 2) || !ft_strncmp(input, "pb", 2))
+    return (0);
+  else
+    return (1);
 }
 
 void  instructions(t_data *data)
 {
   int i;
-  int j;
+  //int j;
 
   i = 0;
-  while (data->split[i])
+  while (data->sp_inst[i])
   {
-    j = 0;
-    while (data->sp_inst[j])
+    if (check_error(data->input))
     {
-      //if (ft_strncmp(data->split[i], data->split[j], 2))
-      if (!cmp(data->split[i], data->sp_inst[j]))
-      {
-        sort(data, data->sp_inst[j]);
-        //ft_putstr_fd("ok\n", 0);
-        break ;
-      }
-      //if (data->sp_inst[j] == NULL)
-      //  ft_putstr_fd("no\n", 0);
-      //else
-      //{
-      //  ft_putstr_fd("no\n", 0);
-      //  break ;
-      //}
-      j++;
+      ft_putstr_fd("Error\n", 1);
+      exit(127);
     }
+    if (!ft_strncmp(data->input, data->sp_inst[i], 2))
+      sort(data);
     i++;
   }
-  if (check_sor(data))
-  {
-    //t_list  *trav;
-    //i = 0;
-    //trav = data->stack_a;
-    ft_putstr_fd("OK\n", 0);
-    exit(127);
-    //while (trav)
-    //{
-    //  trav = trav->link;
-    //  i++;
-    //}
-    //data->len = i;
-    //i = 0;
-    //trav = data->stack_a;
-    //while (i < data->len)
-    //{
-    //  ft_putchar_fd(trav->data, 0);
-    //  ft_putchar_fd('\n', 0);
-    //  trav = trav->link;
-    //}
-  }
-  else
-  {
-    ft_putstr_fd("KO\n", 0);
-    exit(127);
-  }
+  //while (data->split[i])
+  //{
+  //  if (check_error(data->split[i]))
+  //  {
+  //    ft_putstr_fd("Error\n", 1);
+  //    exit(127);
+  //  }
+  //  j = 0;
+  //  while (data->sp_inst[j])
+  //  {
+  //    //if (ft_strncmp(data->split[i], data->split[j], 2))
+  //    //check_error(data);
+  //    //if (!cmp(data->split[i], data->sp_inst[j]))
+  //    if (!ft_strncmp(data->split[i], data->sp_inst[j], 2))
+  //    {
+  //      sort(data, data->sp_inst[j]);
+  //      //ft_putstr_fd("ok\n", 0);
+  //      break ;
+  //    }
+  //    //else
+  //    //{
+  //    //  break ;
+  //    //  ft_putstr_fd("Error\n", 1);
+  //    //  exit(127);
+  //    //}
+
+  //    //if (data->sp_inst[j] == NULL)
+  //    //  ft_putstr_fd("no\n", 0);
+  //    //else
+  //    //{
+  //    //  ft_putstr_fd("no\n", 0);
+  //    //  break ;
+  //    //}
+  //    j++;
+  //  }
+  //  //if ()
+  //  i++;
+  //}
 }
 
 int main(int ac, char **av)
@@ -157,7 +223,9 @@ int main(int ac, char **av)
     while (1)
     {
       data.input = grab_line(0);
-      data.split = ft_split(data.input, ' ');
+      if (!data.input)
+        break ;
+      //data.split = ft_split(data.input, ' ');
       //here check error of input
       instructions(&data);
       //while (data.input[i])
@@ -166,6 +234,33 @@ int main(int ac, char **av)
       //  i++;
       //}
       //i = 0;
+    }
+    if (check_sor(&data))
+    {
+      //t_list  *trav;
+      //i = 0;
+      //trav = data->stack_a;
+      ft_putstr_fd("OK\n", 2);
+      exit(127);
+      //while (trav)
+      //{
+      //  trav = trav->link;
+      //  i++;
+      //}
+      //data->len = i;
+      //i = 0;
+      //trav = data->stack_a;
+      //while (i < data->len)
+      //{
+      //  ft_putchar_fd(trav->data, 0);
+      //  ft_putchar_fd('\n', 0);
+      //  trav = trav->link;
+      //}
+    }
+    else
+    {
+      ft_putstr_fd("KO\n", 1);
+      exit(127);
     }
     //while (trav_a)
     //{

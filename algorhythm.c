@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 09:16:48 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:24:12 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -239,7 +239,7 @@ void  init_stacka_LIS(t_data *data)
       }
       if (j == data->len_seq /*- 1*/)
       {
-        p_b(data);
+        p_b(data, 1);
         //print_youness_ass(data);
         //if (j == 0)
         //b = data->stack_b;

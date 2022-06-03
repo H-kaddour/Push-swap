@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:24:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 09:50:36 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/03 17:21:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void  up_part(t_data *data)
     //check if pos of a and b in index [data->best] are not negative
     while (i < data->pos_b[data->best])
     {
-      rotate_ab(data);
+      rotate_ab(data, 1);
       i++;
     }
     //i = 0;
@@ -37,7 +37,7 @@ void  up_part(t_data *data)
     i = 0;
     while (i < data->pos_a[data->best])
     {
-      rotate_ab(data);
+      rotate_ab(data, 1);
       i++;
     }
     //i = 0;
@@ -61,7 +61,7 @@ void  down_part(t_data *data)
     sign = data->pos_b[data->best] * -1;
     while (i < sign)
     {
-      rotate_ab(data);
+      rotate_ab(data, 1);
       i++;
     }
     sign = data->pos_a[data->best] * -1;
@@ -77,7 +77,7 @@ void  down_part(t_data *data)
     sign = data->pos_a[data->best] * -1;
     while (i < sign)
     {
-      rotate_ab(data);
+      rotate_ab(data, 1);
       i++;
     }
     sign = data->pos_b[data->best] * -1;
