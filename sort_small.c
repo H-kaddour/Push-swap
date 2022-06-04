@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:34:47 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 09:17:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:22:39 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,12 +60,12 @@ void  sort_four(t_data *data, int check)
     //trav_a = trav_a->link;
   }
   //printf("**%d\n", trav_a->data);
-  p_b(data);
+  p_b(data, 1);
   //if (check == 1)
   //  p_b(data);
   sort_three(data);
   if (check == 0)
-    p_a(data);
+    p_a(data, 1);
 }
 
 void  sort_five(t_data *data)
@@ -112,12 +112,12 @@ void  sort_five(t_data *data)
       reverse_a(data, 1);
     trav = data->stack_a;
   }
-  p_b(data);
+  p_b(data, 1);
   sort_four(data, 1);
   if (node_index(data->stack_b, 0) < node_index(data->stack_b, 1))
     swap_a(data, 1);
-  p_a(data);
-  p_a(data);
+  p_a(data, 1);
+  p_a(data, 1);
   //rotate_a(data);
   //p_a(data);
 }

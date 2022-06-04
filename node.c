@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 11:47:29 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 19:27:08 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:16:12 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -147,19 +147,20 @@ void  error_push_P(char *str)
   //maybe i need to free in here the node i allocate.
 }
 
-void  add_to_stack_abs(t_list *node, t_list *nudes)
+void  add_to_stack_abs(t_list **node, t_list **nudes)
 {
   t_list  *head;
   t_list  *ptr;
 
-  if (node_size(node) == 0)
-    error_push_P("stack is empty!\n");
+  if (node_size(*node) == 0)
+    return ;
+    //error_push_P("stack is empty!\n");
   head = malloc(sizeof(t_list));
-  ptr = node;
+  ptr = *node;
   head->data = ptr->data;
   head->link = NULL;
-  head->link = nudes;
-  nudes = head;
+  head->link = *nudes;
+  *nudes = head;
 }
 
 //logic ta3 likhaso li7wih baghi li3dbo mzn wlkin mabghitch return just struct saving
@@ -233,12 +234,12 @@ void  add_to_stack_abs(t_list *node, t_list *nudes)
 //}
 
 //void  pop_that_shit(t_data *data, int check)
-void  pop_that_shit(t_list *node)
+void  pop_that_shit(t_list **node)
 {
   t_list  *next;
 
-  next = node;
-  node = next->link;
+  next = *node;
+  *node = next->link;
   free(next);
   //logic min orakdtawi lottery
   //if (check == 0)

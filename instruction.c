@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:49:08 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 19:28:33 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:15:05 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,9 +280,9 @@ void  p_b(t_data *data, int check)
   //data->stack_b = aadd_to_stackb(data);
   //data->stack_b = add_to_stack2(data->stack_a, data->stack_b);
   //add_to_stack_abs(&data->stack_a, data->stack_b);
-  add_to_stack_abs(data->stack_a, data->stack_b);
+  add_to_stack_abs(&data->stack_a, &data->stack_b);
   //add_to_stackb(data, 0);
-  pop_that_shit(data->stack_a);
+  pop_that_shit(&data->stack_a);
   if (check == 1)
     ft_putstr_fd("pb\n", 1);
   //pop_that_shit(data, 0);
@@ -294,9 +294,9 @@ void  p_a(t_data *data, int check)
   //check if the one of the stack are empty
   //data->stack_a = add_to_stackb(data, 1);
   //data->stack_a = add_to_stack2(data->stack_b, data->stack_a);
-  add_to_stack_abs(data->stack_b, data->stack_a);
+  add_to_stack_abs(&data->stack_b, &data->stack_a);
   //add_to_stackb(data, 1);
-  pop_that_shit(data->stack_b);
+  pop_that_shit(&data->stack_b);
   if (check == 1)
     ft_putstr_fd("pa\n", 1);
   //pop_that_shit(data, 1);

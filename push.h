@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 19:27:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:17:07 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,10 +97,9 @@ t_list  *add_to_stack2(t_list *s_a, t_list *s_b);
 int     node_size(t_list  *node);
 //t_list  *add_to_stackb(t_data *data, int check);
 //void    pop_that_shit(t_data *data, int check);
-//void    pop_that_shit(t_list **node);
-void    pop_that_shit(t_list *node);
-//void    add_to_stack_abs(t_list **node, t_list **nudes);
-void    add_to_stack_abs(t_list *node, t_list *nudes);
+void    pop_that_shit(t_list **node);
+void    add_to_stack_abs(t_list **node, t_list **nudes);
+//void    add_to_stack_abs(t_list *node, t_list *nudes);
 void    fill_stack_node(t_data *data);
 t_list  *fill_node(t_list *head, int data);
 void    error_push_P(char *str);

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 19:55:45 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 12:06:33 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,27 +52,27 @@ int check_sor(t_data *data)
 //void  sort(t_data *data, char *sp_ins)
 void  sort(t_data *data)
 {
-  if (!ft_strncmp(data->input, "sa", 2))
+  if (!ft_strncmp(data->input, "sa", data->len))
     swap_a(data, 0);
-  else if (!ft_strncmp(data->input, "sb", 2))
+  else if (!ft_strncmp(data->input, "sb", data->len))
     swap_b(data, 0);
-  else if (!ft_strncmp(data->input, "ss", 2))
+  else if (!ft_strncmp(data->input, "ss", data->len))
     swap_ab(data, 0);
-  else if (!ft_strncmp(data->input, "ra", 2))
+  else if (!ft_strncmp(data->input, "ra", data->len))
     rotate_a(data, 0);
-  else if (!ft_strncmp(data->input, "rb", 2))
+  else if (!ft_strncmp(data->input, "rb", data->len))
     rotate_b(data, 0);
-  else if (!ft_strncmp(data->input, "rr", 2))
+  else if (!ft_strncmp(data->input, "rr", data->len))
     rotate_ab(data, 0);
-  else if (!ft_strncmp(data->input, "rra", 2))
+  else if (!ft_strncmp(data->input, "rra", data->len))
     reverse_a(data, 0);
-  else if (!ft_strncmp(data->input, "rrb", 2))
+  else if (!ft_strncmp(data->input, "rrb", data->len))
     reverse_b(data, 0);
-  else if (!ft_strncmp(data->input, "rrr", 2))
+  else if (!ft_strncmp(data->input, "rrr", data->len))
     reverse_ab(data, 0);
-  else if (!ft_strncmp(data->input, "pa", 2))
+  else if (!ft_strncmp(data->input, "pa", data->len))
     p_a(data, 0);
-  else if (!ft_strncmp(data->input, "pb", 2))
+  else if (!ft_strncmp(data->input, "pb", data->len))
     p_b(data, 0);
   
   //if (!cmp(sp_ins, "sa"))
@@ -126,17 +126,17 @@ void  sort(t_data *data)
 //  return (0);
 //}
 
-int check_error(char *input)
+int check_error(int len, char *input)
 {
-  if (!ft_strncmp(input, "sa", 2))
-    return (0);
-  //if (!ft_strncmp(input, "sa", 2) || !ft_strncmp(input, "sb", 2) || !ft_strncmp(input, "ss", 2))
+  //if (!ft_strncmp(input, "sa", len))
   //  return (0);
-  else if (!ft_strncmp(input, "ra", 2) || !ft_strncmp(input, "rb", 2) || !ft_strncmp(input, "rr", 2))
+  if (!ft_strncmp(input, "sa", len) || !ft_strncmp(input, "sb", len) || !ft_strncmp(input, "ss", len))
     return (0);
-  else if (!ft_strncmp(input, "ra", 2) || !ft_strncmp(input, "rb", 2) || !ft_strncmp(input, "rrr", 2))
+  else if (!ft_strncmp(input, "ra", len) || !ft_strncmp(input, "rb", len) || !ft_strncmp(input, "rr", len))
     return (0);
-  else if (!ft_strncmp(input, "pa", 2) || !ft_strncmp(input, "pb", 2))
+  else if (!ft_strncmp(input, "ra", len) || !ft_strncmp(input, "rb", len) || !ft_strncmp(input, "rrr", len))
+    return (0);
+  else if (!ft_strncmp(input, "pa", len) || !ft_strncmp(input, "pb", len))
     return (0);
   else
     return (1);
@@ -148,14 +148,19 @@ void  instructions(t_data *data)
   //int j;
 
   i = 0;
+  if (check_error(data->len, data->input))
+  {
+    ft_putstr_fd("Error\n", 1);
+    exit(127);
+  }
   while (data->sp_inst[i])
   {
-    if (check_error(data->input))
-    {
-      ft_putstr_fd("Error\n", 1);
-      exit(127);
-    }
-    if (!ft_strncmp(data->input, data->sp_inst[i], 2))
+    //if (check_error(data->len, data->input))
+    //{
+    //  ft_putstr_fd("Error\n", 1);
+    //  exit(127);
+    //}
+    if (!ft_strncmp(data->input, data->sp_inst[i], data->len))
       sort(data);
     i++;
   }
@@ -225,6 +230,9 @@ int main(int ac, char **av)
       data.input = grab_line(0);
       if (!data.input)
         break ;
+      data.len = ft_strlen(data.input);
+      if (!data.len)
+        error_push_P("Error\n");
       //data.split = ft_split(data.input, ' ');
       //here check error of input
       instructions(&data);
@@ -235,12 +243,13 @@ int main(int ac, char **av)
       //}
       //i = 0;
     }
+    //else here if ac 0
     if (check_sor(&data))
     {
       //t_list  *trav;
       //i = 0;
       //trav = data->stack_a;
-      ft_putstr_fd("OK\n", 2);
+      ft_putstr_fd("OK\n", 1);
       exit(127);
       //while (trav)
       //{

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 19:28:52 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:47:30 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -572,11 +572,13 @@ void  LSD(t_data *data)
     //here check for smart rotate
     //here just pass 1 if smart rotate execute
     //check = check_smart_rotates(data);
-    //if (check == 0)
-    //{
+    //check = 0;
+    check = check_smart_rotates(data);
+    if (check == 0)
+    {
       push_B(data);
       push_A(data);
-    //}
+    }
     p_a(data, 1);
     //print_youness_ass(data);
     free(data->pos_a);

@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 17:24:12 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 13:06:07 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -229,7 +229,7 @@ void  init_stacka_LIS(t_data *data)
     j = 0;
     trav_a = data->stack_a;
     //printf("%d\n", trav_a->data);
-    while (j <= data->len_seq )
+    while (j <= data->len_seq)
     {
       if (data->seq[j] == trav_a->data)
       {
@@ -240,6 +240,7 @@ void  init_stacka_LIS(t_data *data)
       if (j == data->len_seq /*- 1*/)
       {
         p_b(data, 1);
+        //data->len = data->len - 1;
         //print_youness_ass(data);
         //if (j == 0)
         //b = data->stack_b;

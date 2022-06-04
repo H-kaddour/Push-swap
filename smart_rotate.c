@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:24:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/03 17:21:29 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/04 14:34:31 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,8 @@ void  up_part(t_data *data)
       i++;
     }
   }
-  if (data->pos_a[data->best] < data->pos_b[data->best])
+  //if (data->pos_a[data->best] < data->pos_b[data->best])
+  else
   {
     i = 0;
     while (i < data->pos_a[data->best])
@@ -52,38 +53,47 @@ void  up_part(t_data *data)
 void  down_part(t_data *data)
 {
   int i;
-  int sign;
+  int sign_a;
+  int sign_b;
 
   i = 0;
-  if (data->pos_a[data->best] > data->pos_b[data->best])
+  sign_a = data->pos_a[data->best] * -1;
+  sign_b = data->pos_b[data->best] * -1;
+  //if (data->pos_a[data->best] > data->pos_b[data->best])
+  if (sign_a > sign_b)
   {
     i = 0;
-    sign = data->pos_b[data->best] * -1;
-    while (i < sign)
+    //sign = data->pos_b[data->best] * -1;
+    while (i < sign_b)
     {
-      rotate_ab(data, 1);
+      reverse_ab(data, 1);
+      //rotate_ab(data, 1);
       i++;
     }
-    sign = data->pos_a[data->best] * -1;
-    while (i < sign)
+    //sign = data->pos_a[data->best] * -1;
+    while (i < sign_a)
     {
-      rotate_a(data, 1);
+      reverse_a(data, 1);
+      //rotate_a(data, 1);
       i++;
     }
   }
-  if (data->pos_a[data->best] < data->pos_b[data->best])
+  //if (data->pos_a[data->best] < data->pos_b[data->best])
+  else
   {
     i = 0;
-    sign = data->pos_a[data->best] * -1;
-    while (i < sign)
+    //sign = data->pos_a[data->best] * -1;
+    while (i < sign_a)
     {
-      rotate_ab(data, 1);
+      reverse_ab(data, 1);
+      //rotate_ab(data, 1);
       i++;
     }
-    sign = data->pos_b[data->best] * -1;
-    while (i < sign)
+    //sign = data->pos_b[data->best] * -1;
+    while (i < sign_b)
     {
-      rotate_b(data, 1);
+      reverse_b(data, 1);
+      //rotate_b(data, 1);
       i++;
     }
   }
@@ -94,12 +104,12 @@ int check_smart_rotates(t_data *data)
   int i;
 
   i = 0;
-  if (data->pos_a[data->best] >= 0 && data->pos_b[data->best] >= 0)
+  if (data->pos_a[data->best] > 0 && data->pos_b[data->best] > 0)
   {
     up_part(data);
     return (1);
   }
-  if (data->pos_a[data->best] < 0 && data->pos_b[data->best] < 0)
+  else if (data->pos_a[data->best] < 0 && data->pos_b[data->best] < 0)
   {
     down_part(data);
     return (1);
