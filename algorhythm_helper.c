@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:00:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 16:44:28 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:22:20 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,8 @@ void	init_algorhythm(t_data *data)
 	data->s_b = data->len_b / 2;
 }
 
-int	find_best_element(t_data *data)
+//int	find_best_element(t_data *data)
+void	find_best_element(t_data *data)
 {
 	int	i;
 
@@ -43,35 +44,50 @@ int	find_best_element(t_data *data)
 		i++;
 	}
 	i = 0;
-	while(i < data->len_b)
+	while (i < data->len_b)
 	{
-		if (i ==0)
-			data->best_element = i;
-		else if (data->p[i] < data->p[data->best_element])
-			data->best_element = i;
+		if (i == 0)
+			data->best = i;
+		else if (data->p[i] < data->p[data->best])
+			data->best = i;
 		i++;
 	}
-	return (data->best_element);
+}
+
+void	small_down(t_data *data)
+{
+	int	i;
+	int	min_len;
+
+	i = 0;
+	while (i < data->min_index)
+		i++;
+	min_len = data->len - i;
+	i = 0;
+	min_len++;
+	while (i < min_len)
+	{
+		reverse_a(data, 1);
+		i++;
+	}
 }
 
 void	check_small_top(t_data *data)
 {
 	int		i;
 	t_list	*node;
-	t_list	*trav_a;
 
 	i = 0;
-	trav_a = data->stack_a;
+	data->trav_a = data->stack_a;
 	node = find_min(data->stack_a);
-	while (trav_a->link)
+	while (data->trav_a->link)
 	{
-		if (trav_a->data == node->data)
+		if (data->trav_a->data == node->data)
 			break ;
 		i++;
-		trav_a = trav_a->link;
+		data->trav_a = data->trav_a->link;
 	}
 	data->min_index = i;
-	data->s_a = data->len / 2;
 	if (data->min_index <= data->s_a)
 	{
 		i = 0;
@@ -82,14 +98,5 @@ void	check_small_top(t_data *data)
 		}
 	}
 	else if (data->min_index > data->s_a)
-	{
-		i = data->len;
-		//while (i > data->min_index)
-		while (i > data->s_a)
-		{
-			reverse_a(data, 1);
-			//i++;
-			i--;
-		}
-	}
+		small_down(data);
 }

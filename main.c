@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 16:02:18 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:40:37 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,14 +20,15 @@ int	main(int ac, char **av)
 		error("Enter the arg :v\nUsage: [push_swap] number :v", 0);
 	data.stack_a = NULL;
 	data.stack_b = NULL;
-	get_arg(&data, av);
+	get_arg(&data, av, ac);
 	check_sorted(&data);
 	if (data.len <= 5)
 		sort_small_num(&data);
-	if (data.len > 5)
+	else if (data.len > 5)
 	{
 		lis(&data);
 		algorhythm(&data);
 	}
+	while (1);
 	return (0);
 }

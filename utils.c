@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 09:42:56 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:38:03 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void	join_all(t_data *data)
 	data->str = data->join - len;
 }
 
-void	get_arg(t_data *data, char **av)
+void	get_arg(t_data *data, char **av, int ac)
 {
 	int	j;
 
@@ -59,7 +59,7 @@ void	get_arg(t_data *data, char **av)
 	data->str = ft_strdup("");
 	while (av[j])
 	{
-		if (av[1][0] == 0)
+		if (av[1][0] == 0 && ac == 2)
 			error("Arg is empty :/", 0);
 		data->arg = av[j];
 		join_space(data);
@@ -69,4 +69,5 @@ void	get_arg(t_data *data, char **av)
 	data->split = ft_split(data->str, ' ');
 	check_number(data);
 	fill_stack_a(data);
+	free(data->str);
 }

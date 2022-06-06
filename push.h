@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 11:14:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:37:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 
 typedef struct s_list
 {
-	int		data;
+	int				data;
 	struct s_list	*link;
 }	t_list;
 
@@ -69,12 +69,13 @@ typedef struct t_pusha
 	int		*p;
 	int		big_i;
 	int		down;
-	int 	best_element;
+	int		best_element;
 }	t_data;
 
 t_list	*add_node(t_list *node, int data);
 t_list	*find_min(t_list *node);
-void	get_arg(t_data *data, char **av);
+//void	get_arg(t_data *data, char **av);
+void	get_arg(t_data *data, char **av, int ac);
 void	swap_a(t_data *data, int check);
 void	swap_b(t_data *data, int check);
 void	swap_ab(t_data *data, int check);
@@ -115,7 +116,7 @@ void	big_index(t_list *node, t_data *data);
 void	odd_b(t_data *data);
 int		node_index(t_list *stack, int index);
 void	check_even_odd(t_data *data);
-int		find_best_element(t_data *data);
+void	find_best_element(t_data *data);
 void	check_small_top(t_data *data);
 void	init_algorhythm(t_data *data);
 

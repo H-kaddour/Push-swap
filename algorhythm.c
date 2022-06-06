@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 16:31:30 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 17:19:57 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,7 +125,7 @@ void	algorhythm(t_data *data)
 		init_algorhythm(data);
 		fill_pos_b(data);
 		fill_pos_a(data);
-		data->best = find_best_element(data);
+		find_best_element(data);
 		check = check_smart_rotates(data);
 		if (check == 0)
 		{

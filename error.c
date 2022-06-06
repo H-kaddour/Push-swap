@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:52:27 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 18:16:13 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:37:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	check_spaces(t_data *data)
 	i = 0;
 	if (data->str[i] == ' ')
 	{
-		while (data->str[++i])
+		while (data->str[i])
 		{
 			if (data->str[i] != ' ')
 				break ;
