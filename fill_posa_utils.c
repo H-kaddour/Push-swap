@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:50:53 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 17:50:47 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:05:01 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,7 @@ void	check_big(t_data *data, int i)
 	}
 }
 
-void	check_up_part(t_data *data, int i)
+void	check_up_part_a(t_data *data, int i)
 {
 	int	j;
 
@@ -77,7 +77,7 @@ void	check_up_part(t_data *data, int i)
 	}
 }
 
-void	check_down_part(t_data *data, int i)
+void	check_down_part_a(t_data *data, int i)
 {
 	int	k;
 	int	j;

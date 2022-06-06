@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 19:56:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:59:51 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,9 @@
 
 typedef struct s_list
 {
-	int	data;
-	struct s_list *link;
-} t_list;
+	int		data;
+	struct s_list	*link;
+}	t_list;
 
 typedef struct grab_line
 {
@@ -30,10 +30,11 @@ typedef struct grab_line
 	char	*tmp;
 	char	*buff;
 	char	*line;
-} t_gnl;
+}	t_gnl;
 
 typedef struct t_pusha
 {
+	t_list	*min;
 	t_list	*trav_a;
 	t_list	*trav_b;
 	t_list	*stack_a;
@@ -68,13 +69,9 @@ typedef struct t_pusha
 	int		*p;
 	int		big_i;
 	int		down;
-} t_data;
-//some var in struct i didn't use them
+}	t_data;
 
 t_list	*add_node(t_list *node, int data);
-t_list	*add_to_stacka(t_list *node, int data);
-t_list	*add_to_stack2(t_list *s_a, t_list *s_b);
-t_list	*find_min(t_list *node, t_data *data);
 t_list	*find_min(t_list *node, t_data *data);
 void	get_arg(t_data *data, char **av);
 void	swap_a(t_data *data, int check);
@@ -88,32 +85,31 @@ void	reverse_b(t_data *data, int check);
 void	reverse_ab(t_data *data, int check);
 void	p_a(t_data *data, int check);
 void	p_b(t_data *data, int check);
-void	add_to_stackb(t_data *data, int check);
-int 	node_size(t_list  *node);
+int		node_size(t_list *node);
 void	add_to_stack(t_list **node, t_list **node2);
 void	pop_node(t_list **node);
 void	fill_stack_a(t_data *data);
 void	fill_node(t_list *head, int data);
-void	  error(char *str, int check);
+void	error(char *str, int check);
 void	LSD(t_data *data);
 void	find_big_num(t_list *node, t_data *data);
-int 	node_index(t_list *stack, int index);
-int 	duplicate_num(t_data *data);
+int		node_index(t_list *stack, int index);
+int		duplicate_num(t_data *data);
 void	check_sorted(t_data *data);
 void	sort_small_num(t_data *data);
-int 	check_smart_rotates(t_data *data);
+int		check_smart_rotates(t_data *data);
 char	*grab_line(int fd);
 void	check_spaces(t_data *data);
 void	check_number(t_data *data);
 void	lis(t_data *data);
-int 	find_big_value(t_data *data);
+int		find_big_value(t_data *data);
 void	be_ones(t_data *data);
 void	algorhythm(t_data *data);
 void	find_big_num(t_list *node, t_data *data);
 void	do_it(t_data *data);
 void	check_big(t_data *data, int i);
-void	check_up_part(t_data *data, int i);
-void	check_down_part(t_data *data, int i);
+void	check_up_part_a(t_data *data, int i);
+void	check_down_part_a(t_data *data, int i);
 void	big_index(t_list *node, t_data *data);
 void	odd_b(t_data *data);
 int		node_index(t_list *stack, int index);

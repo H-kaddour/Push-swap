@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 20:01:58 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:42:56 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	join_space(t_data *data)
 {
-	int   i;
-	
+	int	i;
+
 	i = 0;
 	while (data->arg[i])
 		i++;
@@ -32,22 +32,17 @@ void	join_space(t_data *data)
 
 void	join_all(t_data *data)
 {
-	int	  len;
-	int i = 0;
+	int	i;
+	int	len;
 
+	i = 0;
 	len = ft_strlen(data->str) + ft_strlen(data->ptr);
 	data->join = malloc(sizeof(char ) * len + 1);
 	while (data->str[i])
-	{
-		*data->join++ = data->str[i];
-		i++;
-	}
+		*data->join++ = data->str[i++];
 	i = 0;
 	while (data->ptr[i])
-	{
-		*data->join++ = data->ptr[i];
-		i++;
-	}
+		*data->join++ = data->ptr[i++];
 	*data->join = 0;
 	free(data->str);
 	free(data->ptr);
@@ -56,8 +51,8 @@ void	join_all(t_data *data)
 
 void	get_arg(t_data *data, char **av)
 {
-	int j;
-	
+	int	j;
+
 	j = 1;
 	data->str = av[j];
 	check_spaces(data);

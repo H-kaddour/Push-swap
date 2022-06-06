@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 17:26:35 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 09:22:55 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,14 @@ void	fill_pos_b(t_data *data)
 		}
 		data->trav_b = data->trav_b->link;
 	}
-	i = 0;
-	printf("pos_b\n");
-	while (i < data->len_b)
-	{
-		printf("%d\n", data->pos_b[i]);
-		i++;
-	}
-	printf("--------\n");
+	//i = 0;
+	//printf("pos_b\n");
+	//while (i < data->len_b)
+	//{
+	//	printf("%d\n", data->pos_b[i]);
+	//	i++;
+	//}
+	//printf("--------\n");
 }
 
 void	fill_pos_a(t_data *data)
@@ -62,21 +62,21 @@ void	fill_pos_a(t_data *data)
 		if (node_index(data->stack_b, i) < data->stack_a->data && \
 			node_index(data->stack_b, i) > node_index(data->stack_a, data->len))
 			data->pos_a[i] = 0;
-		check_up_part(data, i);
-		check_down_part(data, i);
+		check_up_part_a(data, i);
+		check_down_part_a(data, i);
 		i++;
 	}
-	i = 0;
-	printf("pos_a\n");
-	while (i < data->len_b)
-	{
-		printf("%d\n", data->pos_a[i]);
-		i++;
-	}
-	printf("--------\n");
+	//i = 0;
+	//printf("pos_a\n");
+	//while (i < data->len_b)
+	//{
+	//	printf("%d\n", data->pos_a[i]);
+	//	i++;
+	//}
+	//printf("--------\n");
 }
 
-void	push_B(t_data *data)
+void	push_b(t_data *data)
 {
 	int	i;
 	int	sign;
@@ -102,7 +102,7 @@ void	push_B(t_data *data)
 	}
 }
 
-void	push_A(t_data *data)
+void	push_a(t_data *data)
 {
 	int	i;
 	int	sign;
@@ -145,8 +145,8 @@ void	algorhythm(t_data *data)
 		check = check_smart_rotates(data);
 		if (check == 0)
 		{
-			push_B(data);
-			push_A(data);
+			push_b(data);
+			push_a(data);
 		}
 		p_a(data, 1);
 		free(data->pos_a);
