@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 18:04:16 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:16:09 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ void	lis(t_data *data)
 	i = 0;
 	data->len = node_size(data->stack_a);
 	data->tmp = malloc(sizeof(int) * data->len);
-	min = find_min(data->stack_a, data);
+	min = find_min(data->stack_a);
 	fill_tmp(data, min);
 	implement_cache(data);
 	get_sequence(data);

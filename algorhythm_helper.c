@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:00:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 18:09:03 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:44:28 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,14 +43,15 @@ int	find_best_element(t_data *data)
 		i++;
 	}
 	i = 0;
-	data->j = 1;
-	while (data->j < data->len_b)
+	while(i < data->len_b)
 	{
-		if (data->p[data->j] < data->p[i])
-			i++;
-		data->j++;
+		if (i ==0)
+			data->best_element = i;
+		else if (data->p[i] < data->p[data->best_element])
+			data->best_element = i;
+		i++;
 	}
-	return (i);
+	return (data->best_element);
 }
 
 void	check_small_top(t_data *data)
@@ -61,7 +62,7 @@ void	check_small_top(t_data *data)
 
 	i = 0;
 	trav_a = data->stack_a;
-	node = find_min(data->stack_a, data);
+	node = find_min(data->stack_a);
 	while (trav_a->link)
 	{
 		if (trav_a->data == node->data)
@@ -70,10 +71,25 @@ void	check_small_top(t_data *data)
 		trav_a = trav_a->link;
 	}
 	data->min_index = i;
-	i = 0;
-	while (i < data->min_index)
+	data->s_a = data->len / 2;
+	if (data->min_index <= data->s_a)
 	{
-		rotate_a(data, 1);
-		i++;
+		i = 0;
+		while (i < data->min_index)
+		{
+			rotate_a(data, 1);
+			i++;
+		}
+	}
+	else if (data->min_index > data->s_a)
+	{
+		i = data->len;
+		//while (i > data->min_index)
+		while (i > data->s_a)
+		{
+			reverse_a(data, 1);
+			//i++;
+			i--;
+		}
 	}
 }

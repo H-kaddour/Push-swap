@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 09:22:55 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 16:31:30 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,14 +37,6 @@ void	fill_pos_b(t_data *data)
 		}
 		data->trav_b = data->trav_b->link;
 	}
-	//i = 0;
-	//printf("pos_b\n");
-	//while (i < data->len_b)
-	//{
-	//	printf("%d\n", data->pos_b[i]);
-	//	i++;
-	//}
-	//printf("--------\n");
 }
 
 void	fill_pos_a(t_data *data)
@@ -66,14 +58,6 @@ void	fill_pos_a(t_data *data)
 		check_down_part_a(data, i);
 		i++;
 	}
-	//i = 0;
-	//printf("pos_a\n");
-	//while (i < data->len_b)
-	//{
-	//	printf("%d\n", data->pos_a[i]);
-	//	i++;
-	//}
-	//printf("--------\n");
 }
 
 void	push_b(t_data *data)

@@ -26,7 +26,7 @@ You can decrease or increase the speed with the matching buttons.
 """
 
 
-RELATIVE_PATH = r'push'
+RELATIVE_PATH = r'push_swap'
 
 class PsGui:
     def __init__(self, master):

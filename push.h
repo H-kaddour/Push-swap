@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 09:59:51 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:14:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,10 +69,11 @@ typedef struct t_pusha
 	int		*p;
 	int		big_i;
 	int		down;
+	int 	best_element;
 }	t_data;
 
 t_list	*add_node(t_list *node, int data);
-t_list	*find_min(t_list *node, t_data *data);
+t_list	*find_min(t_list *node);
 void	get_arg(t_data *data, char **av);
 void	swap_a(t_data *data, int check);
 void	swap_b(t_data *data, int check);

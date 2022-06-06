@@ -43,20 +43,57 @@ SRC_B = checker.c \
 OBJS = $(SRC:.c=.o)
 OBJS_B = $(SRC_B:.c=.o)
 
+BGreen=\033[1;32m
+BYellow=\033[1;33m
+BBlue=\033[1;34m
+BPink=\033[1;38;5;205m
+BRed=\033[1;31m
+BPurple=\033[1;35m
+
+ascii =██████╗ ██╗   ██╗███████╗██╗  ██╗      ███████╗██╗    ██╗ █████╗ ██████╗ \n\
+			 ██╔══██╗██║   ██║██╔════╝██║  ██║      ██╔════╝██║    ██║██╔══██╗██╔══██╗\n\
+			 ██████╔╝██║   ██║███████╗███████║█████╗███████╗██║ █╗ ██║███████║██████╔╝\n\
+			 ██╔═══╝ ██║   ██║╚════██║██╔══██║╚════╝╚════██║██║███╗██║██╔══██║██╔═══╝ \n\
+			 ██║     ╚██████╔╝███████║██║  ██║      ███████║╚███╔███╔╝██║  ██║██║     \n\
+			 ╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     \n 
+                                                                         
+
 all: $(NAME)
 
+$(LIB):
+	@echo ""
+	@echo "$(BGreen) $(ascii)"
+	@make -C ./libft
+	@echo ""
+	@echo "$(BGreen)$(LIB) $(BBlue)is done :D"
+	@echo ""
+	@mv ./libft/libft.a .
+
 $(NAME): $(LIB) $(OBJS)
-	$(CC) $(SRC) $(LIB) -o $(NAME)
+	@echo ""
+	@echo "$(BGreen)merge $(BBlue)$(SRC) $(LIB) $(BYellow)output $(BGreen)$(NAME)"
+	@$(CC) $(SRC) $(LIB) -o $(NAME) -g
+
+bonus: $(LIB) $(OBJS_B)
+	@echo ""
+	@echo "$(BGreen)merge $(BBlue)$(SRC) $(LIB) $(BYellow)output $(BGreen)$(NAME)"
+	@$(CC) $(SRC_B) $(LIB) -o $(N_BONUS)
 
 %.o: %.c
-	$(CC) $(FLAG) -c $(SRC)
+	@echo "$(BGreen)compile $(BBlue)$^ $(BYellow)link $(BGreen)$(HEADER)"
+	@$(CC) $(FLAGS) -c $^ -I $(HEADER) -g
 
-$(LIB):
-	@make -C ./../libft
-	@mv ./../libft/libft.a .
+clean:
+	@echo "$(BRed)clean"
+	@rm $(LIB)
+	@rm -rf *.o
 
 fclean:
+	@echo "$(BRed)fclean"
 	@rm $(LIB)
-	@make fclean -C ./../libft
+	@rm -rf *.o
+	@make fclean -C ./libft
+
+re: fclean all
 
 .PHONY: all clean fclean bonus re

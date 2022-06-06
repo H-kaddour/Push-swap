@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:34:47 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 10:03:31 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:31:32 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ void	sort_four(t_data *data, int check)
 	t_list	*min;
 	t_list	*trav_a;
 
-	min = find_min(data->stack_a, data);
+	min = find_min(data->stack_a);
 	trav_a = data->stack_a;
 	while (trav_a->data != min->data)
 	{
@@ -71,7 +71,7 @@ void	sort_five(t_data *data)
 	data->j = 0;
 	data->s_a = data->len / 2 + 1;
 	data->trav_a = data->stack_a;
-	data->min = find_min(data->stack_a, data);
+	data->min = find_min(data->stack_a);
 	while (data->trav_a->data != data->min->data)
 	{
 		data->trav_a = data->trav_a->link;

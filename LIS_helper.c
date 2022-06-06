@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:57:21 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 18:05:01 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 11:14:22 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-t_list	*find_min(t_list *node, t_data *data)
+t_list	*find_min(t_list *node)
 {
 	t_list	*next;
 	int		i;
