@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:34:47 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 11:31:32 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:07:01 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	sort_three_helper(t_data *data)
+static void	sort_three_helper(t_data *data)
 {
 	if (node_index(data->stack_a, 0) < node_index(data->stack_a, 1) && \
 			node_index(data->stack_a, 1) > node_index(data->stack_a, 2) \
@@ -27,7 +27,7 @@ void	sort_three_helper(t_data *data)
 		reverse_a(data, 1);
 }
 
-void	sort_three(t_data *data)
+static void	sort_three(t_data *data)
 {
 	if (node_index(data->stack_a, 0) > node_index(data->stack_a, 1) && \
 			node_index(data->stack_a, 1) < node_index(data->stack_a, 2) \
@@ -48,7 +48,7 @@ void	sort_three(t_data *data)
 		sort_three_helper(data);
 }
 
-void	sort_four(t_data *data, int check)
+static void	sort_four(t_data *data, int check)
 {
 	t_list	*min;
 	t_list	*trav_a;
@@ -66,7 +66,7 @@ void	sort_four(t_data *data, int check)
 		p_a(data, 1);
 }
 
-void	sort_five(t_data *data)
+static void	sort_five(t_data *data)
 {
 	data->j = 0;
 	data->s_a = data->len / 2 + 1;

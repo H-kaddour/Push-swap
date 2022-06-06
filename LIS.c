@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 11:16:09 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:02:20 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	fill_tmp(t_data *data, t_list *min)
+static void	fill_tmp(t_data *data, t_list *min)
 {
 	int		i;
 	t_list	*trav;
@@ -35,7 +35,7 @@ void	fill_tmp(t_data *data, t_list *min)
 	}
 }
 
-void	implement_cache(t_data *data)
+static void	implement_cache(t_data *data)
 {
 	int	i;
 	int	j;
@@ -56,7 +56,7 @@ void	implement_cache(t_data *data)
 	}
 }
 
-void	get_sequence(t_data *data)
+static void	get_sequence(t_data *data)
 {
 	int	i;
 	int	j;
@@ -80,7 +80,7 @@ void	get_sequence(t_data *data)
 	}
 }
 
-void	init_stacka_lis(t_data *data)
+static void	init_stacka_lis(t_data *data)
 {
 	int		i;
 	int		j;

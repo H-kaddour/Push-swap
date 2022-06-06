@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/02 19:24:10 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 20:09:10 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:00:41 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	up_part_helper(t_data *data)
+static void	up_part_helper(t_data *data)
 {
 	int	i;
 
@@ -29,7 +29,7 @@ void	up_part_helper(t_data *data)
 	}
 }
 
-void	up_part(t_data *data)
+static void	up_part(t_data *data)
 {
 	int	i;
 
@@ -51,7 +51,7 @@ void	up_part(t_data *data)
 		up_part_helper(data);
 }
 
-void	down_part_helper(t_data *data)
+static void	down_part_helper(t_data *data)
 {
 	int	i;
 
@@ -68,7 +68,7 @@ void	down_part_helper(t_data *data)
 	}
 }
 
-void	down_part(t_data *data)
+static void	down_part(t_data *data)
 {
 	int	i;
 

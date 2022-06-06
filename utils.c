@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 18:38:03 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:05:13 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	join_space(t_data *data)
+static void	join_space(t_data *data)
 {
 	int	i;
 
@@ -30,7 +30,7 @@ void	join_space(t_data *data)
 	data->ptr[i] = 0;
 }
 
-void	join_all(t_data *data)
+static void	join_all(t_data *data)
 {
 	int	i;
 	int	len;

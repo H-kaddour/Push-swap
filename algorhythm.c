@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/20 16:04:18 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 17:19:57 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 19:01:24 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-void	fill_pos_b(t_data *data)
+static void	fill_pos_b(t_data *data)
 {
 	int	i;
 	int	k;
@@ -39,7 +39,7 @@ void	fill_pos_b(t_data *data)
 	}
 }
 
-void	fill_pos_a(t_data *data)
+static void	fill_pos_a(t_data *data)
 {
 	int	i;
 
@@ -60,7 +60,7 @@ void	fill_pos_a(t_data *data)
 	}
 }
 
-void	push_b(t_data *data)
+static void	push_b(t_data *data)
 {
 	int	i;
 	int	sign;
@@ -86,7 +86,7 @@ void	push_b(t_data *data)
 	}
 }
 
-void	push_a(t_data *data)
+static void	push_a(t_data *data)
 {
 	int	i;
 	int	sign;

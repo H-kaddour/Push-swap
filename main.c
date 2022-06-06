@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 18:40:37 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/06 18:50:07 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,5 @@ int	main(int ac, char **av)
 		lis(&data);
 		algorhythm(&data);
 	}
-	while (1);
 	return (0);
 }
