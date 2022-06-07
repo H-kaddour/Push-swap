@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:03:15 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 18:21:52 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/07 06:32:31 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,27 +71,3 @@ void	p_b(t_data *data, int check)
 	if (check == 1)
 		ft_putstr_fd("pb\n", 1);
 }
-
-//void	check_big_part(t_data *data, int i)
-//{
-//	int	k;
-//
-//	data->j = 0;
-//	while (data->j < data->even)
-//	{
-//		if (data->j == i)
-//			data->big_i = i;
-//		data->j++;
-//	}
-//	k = data->odd;
-//	data->index = data->j;
-//	data->j = -i;
-//	while (data->j < data->odd)
-//	{
-//		if (i == data->index)
-//			data->big_i = k + 1;
-//		data->j++;
-//		k++;
-//		data->index++;
-//	}
-//}

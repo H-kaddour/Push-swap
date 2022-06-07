@@ -91,7 +91,8 @@ clean:
 fclean:
 	@echo "$(BRed)fclean"
 	@rm $(LIB)
-	@rm -rf *.o
+	@rm -rf *.dSYM
+	@rm -rf *.o $(N_BONUS) $(NAME)
 	@make fclean -C ./libft
 
 re: fclean all

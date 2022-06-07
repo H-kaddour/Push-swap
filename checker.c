@@ -6,13 +6,13 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/05 17:49:44 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/07 17:11:48 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push.h"
 
-int	check_sor(t_data *data)
+static int	check_sor(t_data *data)
 {
 	int	i;
 
@@ -32,7 +32,7 @@ int	check_sor(t_data *data)
 	return (0);
 }
 
-void	sort(t_data *data)
+static void	sort(t_data *data)
 {
 	if (!ft_strncmp(data->input, "sa", data->len))
 		swap_a(data, 0);
@@ -58,7 +58,7 @@ void	sort(t_data *data)
 		p_b(data, 0);
 }
 
-int	check_error(int len, char *input)
+static int	check_error(int len, char *input)
 {
 	if (!ft_strncmp(input, "sa", len) || !ft_strncmp(input, "sb", len) || \
 			!ft_strncmp(input, "ss", len))
@@ -75,20 +75,21 @@ int	check_error(int len, char *input)
 		return (1);
 }
 
-void	instructions(t_data *data)
+static void	instructions(t_data *data)
 {
 	int	i;
 
 	i = 0;
+	//fix \n in the instruction
 	if (check_error(data->len, data->input))
-	{
-		ft_putstr_fd("Error\n", 1);
-		exit(127);
-	}
+		error("Error\n", 0);
 	while (data->sp_inst[i])
 	{
 		if (!ft_strncmp(data->input, data->sp_inst[i], data->len))
+		{
 			sort(data);
+			break ;
+		}
 		i++;
 	}
 }
@@ -103,7 +104,7 @@ int	main(int ac, char **av)
 	data.stack_b = NULL;
 	if (ac == 1)
 		error("Enter the arg :v\nUsage: [checker] number :v", 0);
-	get_arg(&data, av);
+	get_arg(&data, av, ac);
 	while (1)
 	{
 		data.input = grab_line(0);

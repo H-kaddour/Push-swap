@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 19:05:53 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/07 06:31:21 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,7 +92,6 @@ void	pop_node(t_list **node);
 void	fill_stack_a(t_data *data);
 void	fill_node(t_list *head, int data);
 void	error(char *str, int check);
-void	LSD(t_data *data);
 void	find_big_num(t_list *node, t_data *data);
 int		node_index(t_list *stack, int index);
 int		duplicate_num(t_data *data);
@@ -106,14 +105,12 @@ void	lis(t_data *data);
 int		find_big_value(t_data *data);
 void	be_ones(t_data *data);
 void	algorhythm(t_data *data);
-void	find_big_num(t_list *node, t_data *data);
 void	do_it(t_data *data);
 void	check_big(t_data *data, int i);
 void	check_up_part_a(t_data *data, int i);
 void	check_down_part_a(t_data *data, int i);
 void	big_index(t_list *node, t_data *data);
 void	odd_b(t_data *data);
-int		node_index(t_list *stack, int index);
 void	check_even_odd(t_data *data);
 void	find_best_element(t_data *data);
 void	check_small_top(t_data *data);

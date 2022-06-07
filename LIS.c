@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 19:02:20 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/07 09:00:19 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ static void	fill_tmp(t_data *data, t_list *min)
 		trav = trav->link;
 		i++;
 	}
-	while (trav_a != trav)
+	trav = min;
+	while (trav_a->data != trav->data)
 	{
 		data->tmp[i] = trav_a->data;
 		trav_a = trav_a->link;
@@ -121,4 +122,7 @@ void	lis(t_data *data)
 	implement_cache(data);
 	get_sequence(data);
 	init_stacka_lis(data);
+	free(data->tmp);
+	free(data->cache);
+	free(data->seq);
 }

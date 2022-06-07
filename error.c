@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 16:52:27 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 18:37:29 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/06/07 16:58:42 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ void	check_sorted(t_data *data)
 		i++;
 	}
 	if (i == data->len)
-		error("Number already sorted :D", 0);
+		error("Number already sorted :D\n", 2);
 }
 
 int	duplicate_num(t_data *data)
@@ -62,7 +62,7 @@ void	check_spaces(t_data *data)
 			i++;
 		}
 		if (data->str[i] == '\0')
-			error("First arg it's all spaces :v", 0);
+			error("First arg it's all spaces :v\n", 0);
 	}
 }
 
@@ -78,7 +78,7 @@ void	check_number(t_data *data)
 		while (data->split[i][j])
 		{
 			if (!ft_isdigit(data->split[i][j]))
-				error("Not number :/", 0);
+				error("Not number :/\n", 0);
 			j++;
 		}
 		i++;
