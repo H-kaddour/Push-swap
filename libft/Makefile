@@ -6,14 +6,14 @@
 #    By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/04 20:10:00 by hkaddour          #+#    #+#              #
-#    Updated: 2022/06/06 11:57:14 by hkaddour         ###   ########.fr        #
+#    Updated: 2022/11/08 14:27:14 by hkaddour         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 cc = gcc
 header = libft.h
-CFLAGS = -Wall -Wextra -Werror
+CFLAGS = -Wall -Wextra -Werror -g
 srcs =	ft_atoi.c \
 		ft_putnbr_fd.c \
 		ft_strlen.c \

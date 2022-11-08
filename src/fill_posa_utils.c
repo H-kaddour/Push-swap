@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 16:50:53 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 15:44:29 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:39 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 void	find_big_num(t_list *node, t_data *data)
 {

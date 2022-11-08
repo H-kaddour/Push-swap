@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 12:57:21 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 11:14:22 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:47 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 t_list	*find_min(t_list *node)
 {

@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/06 15:49:08 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 09:27:45 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:42 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 void	swap_a(t_data *data, int check)
 {

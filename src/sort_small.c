@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/01 17:34:47 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 07:43:43 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:55 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 static void	sort_three_helper(t_data *data)
 {

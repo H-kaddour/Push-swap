@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 18:19:06 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 09:27:42 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:44 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 void	reverse_b(t_data *data, int check)
 {

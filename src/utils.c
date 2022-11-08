@@ -6,68 +6,60 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 17:58:28 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 09:00:15 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:58:27 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
-static void	join_space(t_data *data)
+void	init(t_data *data, int ac, char **av)
 {
-	int	i;
-
-	i = 0;
-	while (data->arg[i])
-		i++;
-	data->ptr = malloc(sizeof(char) * i + 2);
-	i = 0;
-	while (data->arg[i])
-	{
-		data->ptr[i] = data->arg[i];
-		i++;
-	}
-	data->ptr[i++] = ' ';
-	data->ptr[i] = 0;
+	data->av = &av[1];
+	data->ac = ac - 1;
 }
 
-static void	join_all(t_data *data)
+static void	check_only_number(t_data *data)
 {
 	int	i;
-	int	len;
-
-	i = 0;
-	len = ft_strlen(data->str) + ft_strlen(data->ptr);
-	data->join = malloc(sizeof(char ) * len + 1);
-	while (data->str[i])
-		*data->join++ = data->str[i++];
-	i = 0;
-	while (data->ptr[i])
-		*data->join++ = data->ptr[i++];
-	*data->join = 0;
-	free(data->str);
-	free(data->ptr);
-	data->str = data->join - len;
-}
-
-void	get_arg(t_data *data, char **av, int ac)
-{
 	int	j;
 
-	j = 1;
-	data->str = av[j];
-	check_spaces(data);
-	data->str = ft_strdup("");
-	while (av[j])
+	i = 0;
+	while (data->av[i])
 	{
-		if (av[1][0] == 0 && ac == 2)
-			error("Arg is empty :/", 0);
-		data->arg = av[j];
-		join_space(data);
-		join_all(data);
-		j++;
+		j = 0;
+		while (data->av[i][j])
+		{
+			if (!(data->av[i][j] >= '0' && data->av[i][j] <= '9'))
+				error("Error\n", 0);
+			j++;
+		}
+		i++;
 	}
-	data->split = ft_split(data->str, ' ');
-	check_number(data);
+}
+
+static void	check_if_duplicated(t_data *data)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < data->ac)
+	{
+		j = 0;
+		while (data->av[j])
+		{
+			if (ft_atoi(data->av[i]) == ft_atoi(data->av[j]) && i != j)
+				error("Error\n", 0);
+			j++;
+		}
+		i++;
+	}
+}
+
+void	parsing(t_data *data)
+{
+	check_only_number(data);
+	check_if_duplicated(data);
 	fill_stack_a(data);
-	free(data->str);
+	data->len = node_size(data->stack_a);
 }

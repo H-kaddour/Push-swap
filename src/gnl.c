@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:11:34 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/04 18:31:13 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:41 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 static char	*get_line(char *str, t_gnl *t_line)
 {

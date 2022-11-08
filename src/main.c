@@ -6,21 +6,23 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/03 13:51:39 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 09:01:28 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:54:46 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 int	main(int ac, char **av)
 {
 	t_data	data;
 
-	if (ac == 1)
-		error("Enter the arg :v\nUsage: [push_swap] number :v", 0);
-	data.stack_a = NULL;
-	data.stack_b = NULL;
-	get_arg(&data, av, ac);
+	//if (ac == 1)
+	if (ac <= 2)
+		return (0);
+	data.stack_a = 0;
+	data.stack_b = 0;
+	init(&data, ac, av);
+	parsing(&data);
 	check_sorted(&data);
 	if (data.len <= 5)
 		sort_small_num(&data);

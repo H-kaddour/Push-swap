@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/03 10:04:19 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 17:11:48 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:45:00 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 static int	check_sor(t_data *data)
 {
@@ -18,6 +18,9 @@ static int	check_sor(t_data *data)
 
 	i = 0;
 	data->len = node_size(data->stack_a) - 1;
+	//printf("%d\n", data->len);
+	if (!data->len)
+		return (1);
 	while (i < data->len)
 	{
 		if (node_index(data->stack_a, i) < node_index(data->stack_a, i + 1))
@@ -66,7 +69,7 @@ static int	check_error(int len, char *input)
 	else if (!ft_strncmp(input, "ra", len) || !ft_strncmp(input, "rb", len) || \
 			!ft_strncmp(input, "rr", len))
 		return (0);
-	else if (!ft_strncmp(input, "ra", len) || !ft_strncmp(input, "rb", len) || \
+	else if (!ft_strncmp(input, "rra", len) || !ft_strncmp(input, "rrb", len) || \
 			!ft_strncmp(input, "rrr", len))
 		return (0);
 	else if (!ft_strncmp(input, "pa", len) || !ft_strncmp(input, "pb", len))
@@ -100,11 +103,14 @@ int	main(int ac, char **av)
 
 	data.inst = "sa sb ss ra rb rr rra rrb rrr pa pb";
 	data.sp_inst = ft_split(data.inst, ' ');
-	data.stack_a = NULL;
-	data.stack_b = NULL;
+	data.stack_a = 0;
+	data.stack_b = 0;
 	if (ac == 1)
-		error("Enter the arg :v\nUsage: [checker] number :v", 0);
-	get_arg(&data, av, ac);
+		return (0);
+	//error("Enter the arg :v\nUsage: [checker] number :v", 0);
+	//get_arg(&data, av, ac);
+	init(&data, ac, av);
+	parsing(&data);
 	while (1)
 	{
 		data.input = grab_line(0);

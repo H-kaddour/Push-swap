@@ -6,17 +6,17 @@
 /*   By: hkaddour <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 18:54:08 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/06 17:49:55 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:06:57 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 #include "libft.h"
 
 void	check_max_min(long rslt)
 {
-	if (rslt > 2147483647)
-		error("INT MAX", 0);
-	else if (rslt < -2147483648)
-		error("INT MIN", 0);
+	if (rslt > INT_MAX)
+		error("Error INT MAX", 0);
+	else if (rslt < INT_MIN)
+		error("Error INT MIN", 0);
 }
 
 int	ft_atoi(const char *str)

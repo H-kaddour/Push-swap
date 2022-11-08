@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/04/28 20:23:35 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 06:31:21 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 16:43:56 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,9 @@
 # include <stdlib.h>
 # include <string.h>
 # include <unistd.h>
-# include "libft/libft.h"
+# include "../libft/libft.h"
+# define INT_MAX 2147483647
+# define INT_MIN -2147483648
 
 typedef struct s_list
 {
@@ -39,6 +41,10 @@ typedef struct t_pusha
 	t_list	*trav_b;
 	t_list	*stack_a;
 	t_list	*stack_b;
+	//new shiit
+	char	**av;
+	int		ac;
+	//
 	char	*str;
 	char	*arg;
 	char	**split;
@@ -72,9 +78,14 @@ typedef struct t_pusha
 	int		best_element;
 }	t_data;
 
+
+void	parsing(t_data *data);
+void	init(t_data *data, int ac, char **av);
+
+
 t_list	*add_node(t_list *node, int data);
 t_list	*find_min(t_list *node);
-void	get_arg(t_data *data, char **av, int ac);
+//void	get_arg(t_data *data, char **av, int ac);
 void	swap_a(t_data *data, int check);
 void	swap_b(t_data *data, int check);
 void	swap_ab(t_data *data, int check);
@@ -90,17 +101,17 @@ int		node_size(t_list *node);
 void	add_to_stack(t_list **node, t_list **node2);
 void	pop_node(t_list **node);
 void	fill_stack_a(t_data *data);
-void	fill_node(t_list *head, int data);
+//void	fill_node(t_list *head, int data);
 void	error(char *str, int check);
 void	find_big_num(t_list *node, t_data *data);
 int		node_index(t_list *stack, int index);
-int		duplicate_num(t_data *data);
+//int		duplicate_num(t_data *data);
 void	check_sorted(t_data *data);
 void	sort_small_num(t_data *data);
 int		check_smart_rotates(t_data *data);
 char	*grab_line(int fd);
-void	check_spaces(t_data *data);
-void	check_number(t_data *data);
+//void	check_spaces(t_data *data);
+//void	check_number(t_data *data);
 void	lis(t_data *data);
 int		find_big_value(t_data *data);
 void	be_ones(t_data *data);

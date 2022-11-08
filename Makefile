@@ -12,33 +12,16 @@
 
 NAME = push_swap
 N_BONUS = checker
-LIB = libft.a
+LIB = libft/libft.a
 CC = cc
-FLAGS = -Wall -Wextra -Werror
-HEADER = push.h
-SRC = main.c \
-			utils.c \
-			node.c \
-			instruction.c \
-			instruction2.c \
-			algorhythm.c \
-			algorhythm_utils.c \
-			algorhythm_helper.c \
-			LIS.c \
-			LIS_helper.c \
-			error.c \
-			fill_posa_utils.c \
-			smart_rotate.c \
-			sort_small.c 
+FLAGS = -Wall -Wextra -Werror -g
+HEADER = include/push.h
+SRC = $(addprefix src/, main.c utils.c node.c instruction.c instruction2.c \
+			algorhythm.c algorhythm_utils.c algorhythm_helper.c LIS.c LIS_helper.c \
+			error.c fill_posa_utils.c smart_rotate.c sort_small.c)
 
-SRC_B = checker.c \
-						utils.c \
-						node.c \
-						instruction.c \
-						instruction2.c \
-						algorhythm_utils.c \
-						error.c \
-						gnl.c
+SRC_B = $(addprefix src/, checker.c utils.c node.c instruction.c instruction2.c \
+				algorhythm_utils.c error.c gnl.c)
 
 OBJS = $(SRC:.c=.o)
 OBJS_B = $(SRC_B:.c=.o)
@@ -58,7 +41,7 @@ ascii =██████╗ ██╗   ██╗███████╗██
 			 ╚═╝      ╚═════╝ ╚══════╝╚═╝  ╚═╝      ╚══════╝ ╚══╝╚══╝ ╚═╝  ╚═╝╚═╝     \n 
                                                                          
 
-all: $(NAME)
+all: $(LIB) $(NAME)
 
 $(LIB):
 	@echo ""
@@ -66,35 +49,38 @@ $(LIB):
 	@make -C ./libft
 	@echo ""
 	@echo "$(BGreen)$(LIB) $(BBlue)is done :D"
-	@echo ""
-	@mv ./libft/libft.a .
 
-$(NAME): $(LIB) $(OBJS)
+$(NAME): $(OBJS)
 	@echo ""
-	@echo "$(BGreen)merge $(BBlue)$(SRC) $(LIB) $(BYellow)output $(BGreen)$(NAME)"
-	@$(CC) $(SRC) $(LIB) -o $(NAME) -g
+	@echo "$(BGreen)merge $(BBlue)$(OBJS) $(LIB) $(BYellow)output $(BGreen)$(NAME)"
+	@$(CC) $(SRC) $(LIB) -g -o $(NAME)
 
 bonus: $(LIB) $(OBJS_B)
 	@echo ""
-	@echo "$(BGreen)merge $(BBlue)$(SRC) $(LIB) $(BYellow)output $(BGreen)$(NAME)"
-	@$(CC) $(SRC_B) $(LIB) -o $(N_BONUS)
+	@echo "$(BGreen)merge $(BBlue)$(OBJS_B) $(LIB) $(BYellow)output $(BGreen)$(B_NAME)"
+	@$(CC) $(SRC_B) $(LIB) -g -o $(N_BONUS)
 
-%.o: %.c
-	@echo "$(BGreen)compile $(BBlue)$^ $(BYellow)link $(BGreen)$(HEADER)"
-	@$(CC) $(FLAGS) -c $^ -I $(HEADER) -g
+%.o: %.c $(HEADER)
+	@echo "$(BGreen)compile $(BBlue)$< $(BYellow) output it $(BBlue)$@ $(BYellow)link $(BGreen)$(HEADER)"
+	@$(CC) $(FLAGS) -c $< -o $@ -I $(HEADER)
 
 clean:
 	@echo "$(BRed)clean"
-	@rm $(LIB)
-	@rm -rf *.o
+	@make clean -C ./libft
+	@rm -rf $(OBJS_B) $(OBJS)
 
 fclean:
 	@echo "$(BRed)fclean"
-	@rm $(LIB)
-	@rm -rf *.dSYM
-	@rm -rf *.o $(N_BONUS) $(NAME)
 	@make fclean -C ./libft
+	@rm -rf $(OBJS_B) $(OBJS) $(N_BONUS) $(NAME)
+	@rm -rf *.dSYM
 
 re: fclean all
 
 .PHONY: all clean fclean bonus re
+
+#handle INTMAX and INTMIN
+#./checker "" 9
+#./checker should not print error
+#fix this one ./checker 9 and pa in function pop_node segfault
+#write error in stderror

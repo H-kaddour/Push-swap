@@ -6,11 +6,11 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/06/05 17:00:12 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/06/07 06:32:16 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/08 14:10:29 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push.h"
+#include "../include/push.h"
 
 void	init_algorhythm(t_data *data)
 {
