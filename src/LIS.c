@@ -6,7 +6,7 @@
 /*   By: hkaddour <hkaddour@student.1337.ma>        +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/05/12 13:58:14 by hkaddour          #+#    #+#             */
-/*   Updated: 2022/11/08 14:10:46 by hkaddour         ###   ########.fr       */
+/*   Updated: 2022/11/09 12:59:34 by hkaddour         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,9 +100,7 @@ static void	init_stacka_lis(t_data *data)
 				break ;
 			}
 			if (j == data->len_seq)
-			{
 				p_b(data, 1);
-			}
 			j++;
 		}
 		i++;
@@ -112,9 +110,7 @@ static void	init_stacka_lis(t_data *data)
 void	lis(t_data *data)
 {
 	t_list	*min;
-	int		i;
 
-	i = 0;
 	data->len = node_size(data->stack_a);
 	data->tmp = malloc(sizeof(int) * data->len);
 	min = find_min(data->stack_a);
